@@ -18,9 +18,9 @@ export class AlvaraListaComponent implements OnInit {
 
     //
     let alvara1 = new Alvara;
-    alvara1.numero = 123;
-    alvara1.cnpj = "0489748978974";
-    alvara1.empresa = "Copel";
+    alvara1.numero = 2122022;
+    alvara1.cnpj = "91222390000108";
+    alvara1.empresa = "Copel vale s/a";
     alvara1.validade = '22/11/2022';
     //
     let alvarasLista: Alvara[] = [alvara1, alvara1, alvara1, alvara1];
