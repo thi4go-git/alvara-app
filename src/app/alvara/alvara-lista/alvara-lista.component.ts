@@ -8,7 +8,7 @@ import { Alvara } from '../alvara';
 })
 export class AlvaraListaComponent implements OnInit {
 
-  alvaraObj: Alvara;
+
   lista: Alvara[] = [];
   colunas = ['numero', 'empresa', 'cnpj', 'validade'];
 
@@ -25,9 +25,11 @@ export class AlvaraListaComponent implements OnInit {
     //
     let alvarasLista: Alvara[] = [alvara1, alvara1, alvara1, alvara1];
     this.lista = alvarasLista;
-    //
-    console.log(this.lista);
 
   }
+
+
+
+
 
 }

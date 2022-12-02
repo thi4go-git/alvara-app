@@ -9,6 +9,7 @@ import { AlvaraModule } from './alvara/alvara.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,6 @@ import { AlvaraModule } from './alvara/alvara.module';
     TemplateModule,
     PreferenciasModule,
     AlvaraModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
