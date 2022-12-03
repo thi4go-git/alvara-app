@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlvaraService } from 'src/app/alvara.service';
 
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-preferencias-form',
@@ -11,6 +13,7 @@ import { AlvaraService } from 'src/app/alvara.service';
 export class PreferenciasFormComponent implements OnInit {
 
   constructor(
+    private router: Router,
     private service: AlvaraService,
     private snackBar: MatSnackBar
   ) { }
@@ -29,19 +32,25 @@ export class PreferenciasFormComponent implements OnInit {
         const pdf = listaArquivos[index];
         const formData: FormData = new FormData();
         formData.append("pdf", pdf);
-        console.log("Processando arquivo: " + pdf.name + " - " + pdf.type);
-        this.service.uploadPdf(formData)
-          .subscribe(response => {
-            console.log("Sucesso UPLOAD " + response);
-          }, responseError => {
-            console.log("ERRO UPLOAD " + responseError);
-          });
-        console.log("");
+        console.log("Processando arquivo: " + pdf.name + " - " + pdf.type + " - Size: " + pdf.size);
+        this.upload(formData);
+        console.log("--");
       }
 
     }
   }
 
-
+  upload(formData: FormData) {
+    this.service.uploadPdf(formData)
+      .subscribe(response => {
+        console.log("Sucesso UPLOAD " + response);
+        this.snackBar.open("Sucesso UPLOAD!", "Sucesso!", {
+          duration: 2000
+        });
+        this.router.navigate(['/alvara-lista']);
+      }, responseError => {
+        console.log("ERRO UPLOAD " + responseError);
+      });
+  }
 
 }

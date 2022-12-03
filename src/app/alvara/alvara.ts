@@ -1,11 +1,12 @@
 export class Alvara {
     id: number;
-    tipoDoc: any;  
+    tipoDoc: any;
+    nomeArquivo: string;
     numeroAlvara: string;
     nomeEmpresa: string;
-    cnaePrincipal: string;
-    cnpjEmpresa: string;       
-    enderecoEmpresa: string;
+    cnpjEmpresa: string;
     dataEmissao: string;
+    dataVencimento: string;
+    expira: number;
     pdf: any;
 }

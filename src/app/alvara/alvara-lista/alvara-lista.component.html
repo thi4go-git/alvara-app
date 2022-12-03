@@ -17,13 +17,14 @@
                 <tr>
                     <th>Id</th>
                     <th>Tipo</th>
+                    <th>Nome Arq</th>
                     <th>Nº Alvará</th>
                     <th>Empresa</th>
                     <th>CNPJ</th>
-                    <th>CNAE</th>
-                    <th>Endereço</th>
                     <th>Emissão</th>
-                    <th>Arquivo</th>
+                    <th>Vencimento</th>
+                    <th>Expira:</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -31,14 +32,15 @@
                 <tr *ngFor="let alv of lista">
                     <td>{{ alv.id }}</td>
                     <td>{{ alv.tipoDoc }}</td>
+                    <td>{{ alv.nomeArquivo }}</td>
                     <td>{{ alv.numeroAlvara }}</td>
                     <td>{{ alv.nomeEmpresa }}</td>
                     <td>{{ alv.cnpjEmpresa }}</td>
-                    <td>{{ alv.cnaePrincipal }}</td>
-                    <td>{{ alv.enderecoEmpresa }}</td>
                     <td>{{ alv.dataEmissao }}</td>
+                    <td>{{ alv.dataVencimento }}</td>
+                    <td>{{ alv.expira }}</td>
                     <td>
-                        <a href="#">                        
+                        <a href="#">
                             <mat-icon>get_app</mat-icon>
                         </a>
                     </td>

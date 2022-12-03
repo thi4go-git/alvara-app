@@ -13,9 +13,9 @@ export class AlvaraListaComponent implements OnInit {
 
 
   lista: Alvara[] = [];
-  colunas = ['id', 'Tipo', 'numeroAlvara',
-    'nomeEmpresa', 'cnpjEmpresa', 'cnaePrincipal', 'enderecoEmpresa',
-    'dataEmissao', 'pdf'];
+  colunas = ['id', 'tipoDoc', 'nomeArquivo',
+    'numeroAlvara', 'nomeEmpresa',
+    'cnpjEmpresa', 'dataEmissao', 'dataVencimento', 'expira', 'pdf'];
 
   constructor(
     private service: AlvaraService,
@@ -28,7 +28,13 @@ export class AlvaraListaComponent implements OnInit {
       .subscribe(resposta => {
         this.lista = resposta;
         console.log(resposta);
+        if (this.lista.length == 0) {
+          this.snackBar.open("Lista Vazia!", "Info!", {
+            duration: 2000
+          });
+        }
       }, responseError => {
+
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
           duration: 2000
         });
