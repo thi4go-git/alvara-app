@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
 import { PreferenciasModule } from './preferencias/preferencias.module';
 import { AlvaraModule } from './alvara/alvara.module';
+import { AlvaraService } from './alvara.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,11 +19,14 @@ import { AlvaraModule } from './alvara/alvara.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     TemplateModule,
     PreferenciasModule,
     AlvaraModule
   ],
-  providers: [],
+  providers: [
+    AlvaraService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

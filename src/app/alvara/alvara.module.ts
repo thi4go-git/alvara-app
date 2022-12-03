@@ -6,8 +6,9 @@ import { AlvaraListaComponent } from './alvara-lista/alvara-lista.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
-
 import { MatTableModule } from '@angular/material/table';
+
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AlvaraListaComponent],
@@ -16,7 +17,8 @@ import { MatTableModule } from '@angular/material/table';
     AlvaraRoutingModule,
     MatToolbarModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ]
 })
 export class AlvaraModule { }

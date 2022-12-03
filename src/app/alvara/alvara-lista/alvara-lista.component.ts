@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AlvaraService } from 'src/app/alvara.service';
 import { Alvara } from '../alvara';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-alvara-lista',
@@ -10,21 +13,27 @@ export class AlvaraListaComponent implements OnInit {
 
 
   lista: Alvara[] = [];
-  colunas = ['numero', 'empresa', 'cnpj', 'validade'];
+  colunas = ['id', 'Tipo', 'numeroAlvara',
+    'nomeEmpresa', 'cnpjEmpresa', 'cnaePrincipal', 'enderecoEmpresa',
+    'dataEmissao', 'pdf'];
 
-  constructor() { }
+  constructor(
+    private service: AlvaraService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
 
-    //
-    let alvara1 = new Alvara;
-    alvara1.numero = 2122022;
-    alvara1.cnpj = "91222390000108";
-    alvara1.empresa = "Copel vale s/a";
-    alvara1.validade = '22/11/2022';
-    //
-    let alvarasLista: Alvara[] = [alvara1, alvara1, alvara1, alvara1];
-    this.lista = alvarasLista;
+    this.service.listarTodos()
+      .subscribe(resposta => {
+        this.lista = resposta;
+        console.log(resposta);
+      }, responseError => {
+        this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
+          duration: 2000
+        });
+
+      });
 
   }
 

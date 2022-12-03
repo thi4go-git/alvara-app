@@ -10,33 +10,40 @@
     </mat-form-field>
 </form>
 
-
-<table mat-table [dataSource]="lista" class="full-width">
-
-
-
-    <ng-container matColumnDef="numero">
-        <th mat-header-cell *matHeaderCellDef> numero </th>
-        <td mat-cell *matCellDef="let alvara"> {{ alvara.numero }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="empresa">
-        <th mat-header-cell *matHeaderCellDef> empresa </th>
-        <td mat-cell *matCellDef="let alvara"> {{ alvara.empresa }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="cnpj">
-        <th mat-header-cell *matHeaderCellDef> cnpj </th>
-        <td mat-cell *matCellDef="let alvara"> {{ alvara.cnpj }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="validade">
-        <th mat-header-cell *matHeaderCellDef> validade </th>
-        <td mat-cell *matCellDef="let alvara"> {{ alvara.validade }} </td>
-    </ng-container>
-
-
-    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
-    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
-
-</table>
+<div class="row">
+    <div class="col-md-12 table-responsive">
+        <table class="table table-condensed table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Nº Alvará</th>
+                    <th>Empresa</th>
+                    <th>CNPJ</th>
+                    <th>CNAE</th>
+                    <th>Endereço</th>
+                    <th>Emissão</th>
+                    <th>Arquivo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alv of lista">
+                    <td>{{ alv.id }}</td>
+                    <td>{{ alv.tipoDoc }}</td>
+                    <td>{{ alv.numeroAlvara }}</td>
+                    <td>{{ alv.nomeEmpresa }}</td>
+                    <td>{{ alv.cnpjEmpresa }}</td>
+                    <td>{{ alv.cnaePrincipal }}</td>
+                    <td>{{ alv.enderecoEmpresa }}</td>
+                    <td>{{ alv.dataEmissao }}</td>
+                    <td>
+                        <a href="#">                        
+                            <mat-icon>get_app</mat-icon>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
