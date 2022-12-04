@@ -9,7 +9,7 @@
 <div class="container">
     <form form #form="ngForm" (submit)="consultarAlvaraPorNome()">
         <div class="row">
-            <label for="inputNome">Nome Cliente: </label>
+            <label for="inputNome">Nome Empresa: </label>
             <div class="col-md-6">
                 <input type="text" [(ngModel)]="nome" name="nome" class="form-control" id="inputNome">
             </div>
@@ -56,7 +56,8 @@
                     <td>{{ alv.dataVencimento }}</td>
                     <td>{{ alv.expira }}</td>
                     <td>
-                        <a href="#">
+                        <a href="#" (click)="baixar(alv)">
+                            Download
                             <mat-icon>get_app</mat-icon>
                         </a>
                     </td>

@@ -5,6 +5,7 @@ import { AlvaraService } from 'src/app/alvara.service';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-preferencias-form',
   templateUrl: './preferencias-form.component.html',
