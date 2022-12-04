@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 
+
 import jQuery from 'jquery'
 
 

@@ -1,14 +1,30 @@
 <p>
     <mat-toolbar>
-        <span>Alvarás </span>
+        <span>
+            <mat-icon>list</mat-icon>Listagem de Alvarás
+        </span>
     </mat-toolbar>
 </p>
-<form>
-    <mat-form-field class="full-width">
-        <mat-label>Buscar:</mat-label>
-        <input matInput placeholder="Digite o Nome:" />
-    </mat-form-field>
-</form>
+
+<div class="container">
+    <form form #form="ngForm" (submit)="consultarAlvaraPorNome()">
+        <div class="row">
+            <label for="inputNome">Nome Cliente: </label>
+            <div class="col-md-6">
+                <input type="text" [(ngModel)]="nome" name="nome" class="form-control" id="inputNome">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>Consultar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<br />
 
 <div class="row">
     <div class="col-md-12 table-responsive">
