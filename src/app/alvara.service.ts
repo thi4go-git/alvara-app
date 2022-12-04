@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alvara } from './alvara/alvara';
+import { AlvaraPaginator } from './alvara/alvaraPaginator';
 
 const API_URL = 'http://localhost:8080/api/alvara';
 const httpOptions = {
@@ -21,8 +22,11 @@ export class AlvaraService {
   }
 
 
-  listarTodos(): Observable<Alvara[]> {
-    return this.http.get<Alvara[]>(API_URL);
+  listarTodos(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(API_URL + "?" + params.toString());
   }
 
 
