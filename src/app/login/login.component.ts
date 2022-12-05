@@ -22,15 +22,14 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-
     this.authService
       .obterToken(this.username, this.password)
       .subscribe(response => {
-        const token = JSON.stringify(response);
-        localStorage.setItem('token', token);
+        const access_token = JSON.stringify(response);
+        localStorage.setItem('access_token', access_token);
         this.router.navigate(['/alvara/lista'])
       }, errorResponse => {
-        this.erros = ['Usuário ou Senha incorretos'];
+        this.loginError = true;
       }
       )
   }
