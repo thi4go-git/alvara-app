@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-preferencias-form',
   templateUrl: './preferencias-form.component.html',
-  styleUrls: ['./preferencias-form.component.css']
+  styleUrls: []
 })
 export class PreferenciasFormComponent implements OnInit {
 

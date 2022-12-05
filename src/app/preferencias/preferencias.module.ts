@@ -7,6 +7,7 @@ import { PreferenciasFormComponent } from './preferencias-form/preferencias-form
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [PreferenciasFormComponent],
@@ -15,7 +16,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     PreferenciasRoutingModule,
     MatSnackBarModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ]
 })
 export class PreferenciasModule { }

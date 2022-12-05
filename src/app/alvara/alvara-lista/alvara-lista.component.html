@@ -1,73 +1,96 @@
-<p>
-    <mat-toolbar>
-        <span>
-            <mat-icon>list</mat-icon>Listagem de Alvarás
-        </span>
-    </mat-toolbar>
-</p>
+<mat-tab-group>
 
-<div class="container">
-    <form form #form="ngForm" (submit)="consultarAlvaraPorNome()">
+    <mat-tab label="Alvarás">
+        <p>
+            <mat-toolbar>
+                <span>
+                    <mat-icon>list</mat-icon>Listagem de Alvarás
+                </span>
+            </mat-toolbar>
+        </p>
+
+        <div class="container">
+            <form form #form="ngForm" (submit)="consultarAlvaraPorNome()">
+                <div class="row">
+                    <label for="inputNome">Nome Empresa: </label>
+                    <div class="col-md-6">
+                        <input type="text" [(ngModel)]="nome" name="nome" class="form-control" id="inputNome">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i>Consultar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+        <br />
+
         <div class="row">
-            <label for="inputNome">Nome Empresa: </label>
-            <div class="col-md-6">
-                <input type="text" [(ngModel)]="nome" name="nome" class="form-control" id="inputNome">
-            </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-search"></i>Consultar
-                </button>
+            <div class="col-md-12 table-responsive">
+                <table class="table table-condensed table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Tipo</th>
+                            <th>Nome Arq</th>
+                            <th>Nº Alvará</th>
+                            <th>Empresa</th>
+                            <th>CNPJ</th>
+                            <th>Emissão</th>
+                            <th>Vencimento</th>
+                            <th>Expira:</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let alv of lista">
+                            <td>{{ alv.id }}</td>
+                            <td>{{ alv.tipoDoc }}</td>
+                            <td>{{ alv.nomeArquivo }}</td>
+                            <td>{{ alv.numeroAlvara }}</td>
+                            <td>{{ alv.nomeEmpresa }}</td>
+                            <td>{{ alv.cnpjEmpresa }}</td>
+                            <td>{{ alv.dataEmissao }}</td>
+                            <td>{{ alv.dataVencimento }}</td>
+                            <td>{{ alv.expira }}</td>
+                            <td>
+                                <a href="#" (click)="baixar(alv)">
+                                    Download
+                                    <mat-icon>get_app</mat-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="pageSizeOptions"
+                    (page)="paginar($event)">
+                </mat-paginator>
+
             </div>
         </div>
-    </form>
-</div>
+    </mat-tab>
 
 
+    <mat-tab label="Processar Arquivos">
+        <mat-card>
+            <p>
+                <mat-toolbar>
+                    <span>
+                        <mat-icon>settings</mat-icon>Processar Arquivos PDF
+                    </span>
+                </mat-toolbar>
+            </p>
+            <form>
+                <input type="file" name="pdf" multiple (change)="uploadPdf($event)"
+                    data-allowed-file-extensions='["pdf"]' />
+            </form>
+        </mat-card>
+    </mat-tab>
 
-<br />
-
-<div class="row">
-    <div class="col-md-12 table-responsive">
-        <table class="table table-condensed table-hover table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Tipo</th>
-                    <th>Nome Arq</th>
-                    <th>Nº Alvará</th>
-                    <th>Empresa</th>
-                    <th>CNPJ</th>
-                    <th>Emissão</th>
-                    <th>Vencimento</th>
-                    <th>Expira:</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let alv of lista">
-                    <td>{{ alv.id }}</td>
-                    <td>{{ alv.tipoDoc }}</td>
-                    <td>{{ alv.nomeArquivo }}</td>
-                    <td>{{ alv.numeroAlvara }}</td>
-                    <td>{{ alv.nomeEmpresa }}</td>
-                    <td>{{ alv.cnpjEmpresa }}</td>
-                    <td>{{ alv.dataEmissao }}</td>
-                    <td>{{ alv.dataVencimento }}</td>
-                    <td>{{ alv.expira }}</td>
-                    <td>
-                        <a href="#" (click)="baixar(alv)">
-                            Download
-                            <mat-icon>get_app</mat-icon>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="pageSizeOptions"
-            (page)="paginar($event)">
-        </mat-paginator>
-
-    </div>
-</div>
+</mat-tab-group>
