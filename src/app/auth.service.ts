@@ -28,5 +28,10 @@ export class AuthService {
     return this.http.post(API_URL_BASE + API_URL_TOKEN, params.toString(), { headers });
   }
 
+  isAuthenticated(): boolean {
+    return false;
+  }
+
+
 
 }

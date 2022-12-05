@@ -5,11 +5,6 @@ import { Alvara } from './alvara/alvara';
 import { AlvaraPaginator } from './alvara/alvaraPaginator';
 
 const API_URL = 'http://localhost:8080/api/alvara';
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
-};
 
 @Injectable({ providedIn: 'root' })
 export class AlvaraService {
@@ -18,15 +13,32 @@ export class AlvaraService {
 
 
   uploadPdf(formData: FormData): Observable<any> {
-    return this.http.post(API_URL + '/pdf', formData, { responseType: 'blob' },);
+
+    const tokenStr = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenStr);
+    const headers = {
+      'Authorization': 'Bearer ' + token.access_token
+    }
+
+
+    return this.http.post(API_URL + '/pdf', formData, { responseType: 'blob' });
   }
 
 
   listarTodos(page, size): Observable<AlvaraPaginator> {
+
+
+    const tokenStr = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenStr);
+    const headers = {
+      'Authorization': 'Bearer ' + token.access_token
+    }
+
+
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-    return this.http.get<any>(API_URL + "?" + params.toString());
+    return this.http.get<any>(API_URL + "?" + params.toString(),{headers});
   }
 
   listarPorNome(page, size, nome): Observable<AlvaraPaginator> {
