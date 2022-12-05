@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth.guard';
 import { LayoutComponent } from '../layout/layout.component';
 import { AlvaraListaComponent } from './alvara-lista/alvara-lista.component';
 
 
 const routes: Routes = [
   {
-    path: 'alvara', component: LayoutComponent, children: [
+    path: 'alvara', component: LayoutComponent, canActivate: [AuthGuard], children: [
       { path: 'lista', component: AlvaraListaComponent },
       { path: '', redirectTo: '/alvara/lista', pathMatch: 'full' }
     ]
