@@ -26,13 +26,13 @@ export class LoginComponent {
     this.authService
       .obterToken(this.username, this.password)
       .subscribe(response => {
-        console.log(response);
+        const token = JSON.stringify(response);
+        localStorage.setItem('token', token);
         this.router.navigate(['/alvara/lista'])
       }, errorResponse => {
         this.erros = ['Usuário ou Senha incorretos'];
       }
       )
   }
-
 
 }
