@@ -14,6 +14,7 @@ export class LoginComponent {
   password: string;
   loginError: boolean;
 
+  erros: string[];
 
   constructor(
     private router: Router,
@@ -21,8 +22,16 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    console.log(this.username + " - " + this.password);
-    this.router.navigate(['/alvara/lista']);
+
+    this.authService
+      .obterToken(this.username, this.password)
+      .subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/alvara/lista'])
+      }, errorResponse => {
+        this.erros = ['Usuário ou Senha incorretos'];
+      }
+      )
   }
 
 

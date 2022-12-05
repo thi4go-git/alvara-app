@@ -8,12 +8,6 @@ const CLI_ID = 'my-angular-app';
 const CLI_SECRET = '@321';
 
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
-};
-
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
