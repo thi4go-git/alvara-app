@@ -48,7 +48,7 @@ export class PreferenciasFormComponent implements OnInit {
         this.snackBar.open("Sucesso UPLOAD!", "Sucesso!", {
           duration: 2000
         });
-        this.router.navigate(['/alvara-lista']);
+        this.router.navigate(['/alvara/lista']);
       }, responseError => {
         console.log("ERRO UPLOAD " + responseError);
       });

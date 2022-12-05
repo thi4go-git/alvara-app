@@ -19,7 +19,7 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    this.router.navigate(['/alvara-lista']);
+    this.router.navigate(['/alvara/lista']);
   }
 
 
