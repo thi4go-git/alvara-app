@@ -51,4 +51,18 @@ export class AuthService {
     return this.http.post(API_URL_BASE + API_URL_TOKEN, params.toString(), { headers });
   }
 
+  encerrarSessao() {
+    localStorage.removeItem('access_token');
+  }
+
+  getUsuarioAutenticado() {
+    const token = this.obterTokenStorage();
+    if (token) {
+      const usuario = this.jwtHelper.decodeToken(token).user_name
+      return usuario;
+    }
+  }
+
+
+
 }

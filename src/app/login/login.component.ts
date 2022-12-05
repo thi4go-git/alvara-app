@@ -9,7 +9,6 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
 
-
   username: string;
   password: string;
   loginError: boolean;
