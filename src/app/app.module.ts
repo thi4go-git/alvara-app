@@ -11,6 +11,7 @@ import { PreferenciasModule } from './preferencias/preferencias.module';
 import { AlvaraModule } from './alvara/alvara.module';
 import { AlvaraService } from './alvara.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
