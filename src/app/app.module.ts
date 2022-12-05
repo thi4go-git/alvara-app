@@ -13,10 +13,7 @@ import { AlvaraService } from './alvara.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
-
-
-
-
+import { AuthService } from './auth.service';
 
 
 
@@ -37,7 +34,8 @@ import { LayoutComponent } from './layout/layout.component';
 
   ],
   providers: [
-    AlvaraService
+    AlvaraService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
