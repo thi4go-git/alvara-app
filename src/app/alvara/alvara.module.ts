@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { NgModule } from '@angular/core';
 
@@ -29,8 +30,8 @@ import { NgModule } from '@angular/core';
     MatIconModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatCardModule
-
+    MatCardModule,
+    MatSnackBarModule
   ]
 })
 export class AlvaraModule { }

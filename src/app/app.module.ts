@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
-import { PreferenciasModule } from './preferencias/preferencias.module';
 import { AlvaraModule } from './alvara/alvara.module';
 import { AlvaraService } from './alvara.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -30,9 +29,7 @@ import { TokenInterceptor } from './token.interceptor';
     AppRoutingModule,
     HttpClientModule,
     TemplateModule,
-    PreferenciasModule,
     AlvaraModule
-
   ],
   providers: [
     AlvaraService,
