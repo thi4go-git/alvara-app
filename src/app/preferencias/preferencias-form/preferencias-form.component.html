@@ -1,0 +1,13 @@
+<mat-card>
+    <p>
+        <mat-toolbar>
+            <span>
+                <mat-icon>settings</mat-icon>Processar Arquivos PDF
+            </span>
+        </mat-toolbar>
+    </p>
+    <form>
+        <input type="file" name="pdf" multiple (change)="uploadPdf($event)"
+            data-allowed-file-extensions='["pdf"]' />
+    </form>
+</mat-card>

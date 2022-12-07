@@ -15,6 +15,12 @@
                     Alvarás
                 </a>
 
+                <a class="nav-link active" routerLink="/preferencias/form">
+                    <mat-icon>settings_applications</mat-icon>
+                    Preferências
+                </a>
+
+
                 <div class="sb-sidenav-menu-heading">Logout</div>
                 <a class="nav-link collapsed" (click)="logout()" href="#" data-toggle="collapse"
                     data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -28,7 +34,10 @@
 
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Usuário logado:</div>
+            <div class="small">
+                <mat-icon>perm_identity</mat-icon>
+                Usuário logado:
+            </div>
             {{ usuarioLogado }}
         </div>
     </nav>

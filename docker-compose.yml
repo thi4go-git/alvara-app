@@ -3,10 +3,6 @@ version: '3.4'
 services:
   alvaraapp:
     image: alvaraapp
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+    build: .
     ports:
-      - 3000:3000
+      - 8086:3000

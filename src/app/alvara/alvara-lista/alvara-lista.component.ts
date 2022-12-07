@@ -114,38 +114,6 @@ export class AlvaraListaComponent implements OnInit {
     link.click();
   };
 
-  uploadPdf(event) {
-    const files = event.target.files;
-    if (files) {
-
-      let listaArquivos: File[] = [];
-      listaArquivos = files;
-      for (let index = 0; index < listaArquivos.length; index++) {
-        const pdf = listaArquivos[index];
-        const formData: FormData = new FormData();
-        formData.append("pdf", pdf);
-        console.log("Processando arquivo: " + pdf.name + " - " + pdf.type + " - Size: " + pdf.size);
-        this.upload(formData);
-        console.log("--");
-      }
-
-    }
-  }
-
-  upload(formData: FormData) {
-    this.service.uploadPdf(formData)
-      .subscribe(response => {
-        console.log("Sucesso UPLOAD " + response);
-        this.snackBar.open("Sucesso UPLOAD!", "Sucesso!", {
-          duration: 2000
-        });
-        this.router.navigate(['/alvara/lista']);
-      }, responseError => {
-        console.log("ERRO UPLOAD " + responseError);
-      });
-  }
-
-
 }
 
 

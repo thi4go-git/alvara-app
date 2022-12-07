@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './auth.service';
 import { TokenInterceptor } from './token.interceptor';
+import { PreferenciasModule } from './preferencias/preferencias.module';
 
 
 
@@ -29,7 +30,8 @@ import { TokenInterceptor } from './token.interceptor';
     AppRoutingModule,
     HttpClientModule,
     TemplateModule,
-    AlvaraModule
+    AlvaraModule,
+    PreferenciasModule
   ],
   providers: [
     AlvaraService,
