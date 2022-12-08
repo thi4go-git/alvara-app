@@ -6,7 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 
 
 
-const API_URL_BASE = 'http://192.168.1.253:8085';
+const API_URL_BASE = 'http://192.168.1.253:8089';
 const API_URL_TOKEN = '/oauth/token';
 const CLI_ID = 'my-angular-app';
 const CLI_SECRET = '@321';
