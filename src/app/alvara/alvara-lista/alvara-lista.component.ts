@@ -15,6 +15,8 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class AlvaraListaComponent implements OnInit {
 
+  mostraProgresso: boolean = true;
+
   totalElementos = 0;
   pagina;
   tamanho;
@@ -32,10 +34,13 @@ export class AlvaraListaComponent implements OnInit {
     private router: Router,
     private service: AlvaraService,
     private snackBar: MatSnackBar
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit(): void {
     this.listarArquivos();
+    this.mostraProgresso = true;
   }
 
 

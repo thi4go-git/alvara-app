@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  alvaraapp:
-    image: alvaraapp
-    build: .
-    ports:
-      - 8086:3000
