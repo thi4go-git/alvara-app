@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AlvaraPaginator } from './alvara/alvaraPaginator';
 
-const API_URL = 'http://cloudtecnologia.ddns.net:8089/api/alvara';
 
+
+//const API_URL = 'http://cloudtecnologia.ddns.net:8089/api/alvara';
+const API_URL = 'http://localhost:8080/api/alvara';
 @Injectable({ providedIn: 'root' })
 export class AlvaraService {
 

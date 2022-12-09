@@ -15,6 +15,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './auth.service';
 import { TokenInterceptor } from './token.interceptor';
 import { PreferenciasModule } from './preferencias/preferencias.module';
+import { HomeModule } from './home/home.module';
+
 
 
 
@@ -31,7 +33,8 @@ import { PreferenciasModule } from './preferencias/preferencias.module';
     HttpClientModule,
     TemplateModule,
     AlvaraModule,
-    PreferenciasModule
+    PreferenciasModule,
+    HomeModule
   ],
   providers: [
     AlvaraService,

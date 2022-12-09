@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt'
 
 
-
-const API_URL_BASE = 'http://cloudtecnologia.ddns.net:8089';
-const API_URL_TOKEN = '/oauth/token';
+const API_URL_TOKEN = 'http://localhost:8080/oauth/token';
 const CLI_ID = 'my-angular-app';
 const CLI_SECRET = '@321';
 
@@ -48,7 +46,8 @@ export class AuthService {
       'Authorization': 'Basic ' + btoa(CLI_ID + ':' + CLI_SECRET),
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(API_URL_BASE + API_URL_TOKEN, params.toString(), { headers });
+
+    return this.http.post(API_URL_TOKEN, params.toString(), { headers });
   }
 
   encerrarSessao() {

@@ -26,9 +26,10 @@ export class LoginComponent {
       .subscribe(response => {
         const access_token = JSON.stringify(response);
         localStorage.setItem('access_token', access_token);
-        this.router.navigate(['/alvara/lista'])
+        this.router.navigate(['/home/inicio'])
       }, errorResponse => {
         this.loginError = true;
+        console.log(errorResponse);
       }
       )
   }
