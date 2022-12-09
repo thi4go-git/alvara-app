@@ -28,8 +28,8 @@ export class LoginComponent {
         localStorage.setItem('access_token', access_token);
         this.router.navigate(['/home/inicio'])
       }, errorResponse => {
-        this.loginError = true;
-        console.log(errorResponse);
+        this.loginError = true;  
+        this.erros = [errorResponse.error.error_description];
       }
       )
   }
