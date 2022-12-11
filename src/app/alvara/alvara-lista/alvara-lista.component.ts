@@ -23,6 +23,7 @@ export class AlvaraListaComponent implements OnInit {
   pageSizeOptions: number[] = [10];
   //
   nome: string = "";
+  //
 
 
   lista: Alvara[] = [];
@@ -34,8 +35,8 @@ export class AlvaraListaComponent implements OnInit {
     private router: Router,
     private service: AlvaraService,
     private snackBar: MatSnackBar
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
@@ -47,6 +48,8 @@ export class AlvaraListaComponent implements OnInit {
   listarArquivos(pagina = 0, tamanho = 10) {
     this.service.listarTodos(pagina, tamanho)
       .subscribe(resposta => {
+        console.log(resposta);
+
         this.lista = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
@@ -62,7 +65,6 @@ export class AlvaraListaComponent implements OnInit {
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
           duration: 2000
         });
-
       });
   }
 

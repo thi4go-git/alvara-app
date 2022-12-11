@@ -2,19 +2,21 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AlvaraPaginator } from './alvara/alvaraPaginator';
+import { environment } from '../environments/environment'
 
 
 
-//const API_URL = 'http://cloudtecnologia.ddns.net:8089/api/alvara';
-const API_URL = 'http://localhost:8080/api/alvara';
 @Injectable({ providedIn: 'root' })
 export class AlvaraService {
+
+  apiURL: string = environment.apiUrl + "/api/alvara";
+
 
   constructor(private http: HttpClient) { }
 
 
   uploadPdf(formData: FormData): Observable<any> {
-    return this.http.post(API_URL + '/pdf', formData, { responseType: 'blob' });
+    return this.http.post(this.apiURL + '/pdf', formData, { responseType: 'blob' });
   }
 
 
@@ -22,7 +24,7 @@ export class AlvaraService {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-    return this.http.get<any>(API_URL + "?" + params.toString());
+    return this.http.get<any>(this.apiURL + "?" + params.toString());
   }
 
   listarPorNome(page, size, nome): Observable<AlvaraPaginator> {
@@ -30,7 +32,15 @@ export class AlvaraService {
       .set('page', page)
       .set('size', size)
       .set("nome", nome)
-    return this.http.get<any>(API_URL + "/nome?" + params.toString());
+    return this.http.get<any>(this.apiURL + "/nome?" + params.toString());
+  }
+
+  totalArquivos(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/totalarquivos");
+  }
+
+  totalArquivosSemInfo(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/qtdeseminfo");
   }
 
 }

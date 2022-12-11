@@ -3,15 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt'
-
-
-const API_URL_TOKEN = 'http://localhost:8080/oauth/token';
-const CLI_ID = 'my-angular-app';
-const CLI_SECRET = '@321';
+import { environment } from '../environments/environment'
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+
+
+  apiURL: string = environment.apiUrl + "/oauth/token";
 
   jwtHelper: JwtHelperService;
 
@@ -43,11 +43,11 @@ export class AuthService {
       .set('password', password)
       .set('grant_type', 'password');
     const headers = {
-      'Authorization': 'Basic ' + btoa(CLI_ID + ':' + CLI_SECRET),
+      'Authorization': 'Basic ' + btoa(environment.CLI_ID + ':' + environment.CLI_SECRET),
       'Content-Type': 'application/x-www-form-urlencoded'
     };
 
-    return this.http.post(API_URL_TOKEN, params.toString(), { headers });
+    return this.http.post(this.apiURL, params.toString(), { headers });
   }
 
   encerrarSessao() {
