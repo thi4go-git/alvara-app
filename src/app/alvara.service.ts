@@ -39,8 +39,20 @@ export class AlvaraService {
     return this.http.get<number>(this.apiURL + "/totalarquivos");
   }
 
-  totalArquivosSemInfo(): Observable<number> {
-    return this.http.get<number>(this.apiURL + "/qtdeseminfo");
+  totalArquivosVencidos(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/totalvencidos");
+  }
+
+  totalArquivosVencerEm60Dias(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/totalvencerem60dias");
+  }
+
+  totalArquivosVencerApos60Dias(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/totalvencerapos60dias");
+  }
+
+  totalArquivosSemInformacoes(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/totalseminformacoes");
   }
 
 }
