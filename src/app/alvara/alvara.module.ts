@@ -16,11 +16,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgModule } from '@angular/core';
+import { AlvaraFormComponent } from './alvara-form/alvara-form.component';
 
 
 
 @NgModule({
-  declarations: [AlvaraListaComponent],
+  declarations: [AlvaraListaComponent, AlvaraFormComponent],
   imports: [
     CommonModule,
     FormsModule,

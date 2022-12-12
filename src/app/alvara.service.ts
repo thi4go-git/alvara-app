@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AlvaraPaginator } from './alvara/alvaraPaginator';
 import { environment } from '../environments/environment'
+import { Alvara } from './alvara/alvara';
 
 
 
@@ -54,5 +55,15 @@ export class AlvaraService {
   totalArquivosSemInformacoes(): Observable<number> {
     return this.http.get<number>(this.apiURL + "/totalseminformacoes");
   }
+
+  obterArquivoPorId(id: number): Observable<Alvara> {
+    return this.http.get<Alvara>(this.apiURL + "/" + id);
+  }
+
+
+  atualizarArquivoPorId(alvara: Alvara): Observable<any> {
+    return this.http.put<any>(this.apiURL + "/atualizar", alvara);
+  }
+
 
 }

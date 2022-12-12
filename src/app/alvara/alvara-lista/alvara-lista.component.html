@@ -62,13 +62,12 @@
                     <td>{{ alv.dataVencimento }}</td>
                     <td>{{ alv.expira}}</td>
                     <td>
-                        <a href="/alvara/lista" (click)="baixar(alv)">
-                            Download
+                        <button type="button" class="btn btn-primary" (click)="baixar(alv)">
                             <mat-icon>get_app</mat-icon>
-                        </a>
+                        </button>
                     </td>
                     <td>
-                        <a href="#" *ngIf="!alv.dataEmissao">
+                        <a routerLink="/alvara/form/{{ alv.id }}" *ngIf="!alv.dataEmissao">
                             <mat-icon>edit</mat-icon>
                         </a>
                     </td>

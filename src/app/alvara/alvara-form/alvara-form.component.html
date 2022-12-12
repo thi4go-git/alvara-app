@@ -1,0 +1,99 @@
+<h1 class="mt-4">Editar Alvará</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Edição</li>
+</ol>
+<div class="container">
+    <form #arquivoForm="ngForm" (ngSubmit)="onSubmit()">
+
+
+        <div id="row">
+            <div id="col-md-12">
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+
+
+        <div id="row">
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>ID:</label>
+                    <input type="text" class="form-control" disabled="true" [ngModel]="alvara.id" name="id" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Tipo Doc:</label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.tipoDoc" name="tipoDoc" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Nome Arquivo: </label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.nomeArquivo" name="nomeArquivo" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Nº Alvará:</label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.numeroAlvara" name="numeroAlvara" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Empresa: </label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.nomeEmpresa" name="nomeEmpresa" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>CNPJ: </label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.cnpjEmpresa" name="cnpjEmpresa" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Emissão: </label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.dataEmissao" name="dataEmissao" />
+                </div>
+            </div>
+
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Vencimento: </label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.dataVencimento" name="dataVencimento" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <label>Expira:</label>
+                    <input type="text" class="form-control" [ngModel]="alvara.expira" name="expira" disabled="true" />
+                </div>
+            </div>
+
+
+        </div>
+
+        <br />
+
+        <div id="row">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary" *ngIf="alvara.id">
+                    <i class="fa fa-sync-alt"></i>Atualizar
+                </button>
+
+            </div>
+        </div>
+
+    </form>
+</div>

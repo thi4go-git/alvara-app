@@ -48,12 +48,9 @@ export class AlvaraListaComponent implements OnInit {
   listarArquivos(pagina = 0, tamanho = 10) {
     this.service.listarTodos(pagina, tamanho)
       .subscribe(resposta => {
-        console.log(resposta);
-
         this.lista = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
-
         if (this.lista.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -80,7 +77,6 @@ export class AlvaraListaComponent implements OnInit {
         this.lista = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
-
         if (this.lista.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
