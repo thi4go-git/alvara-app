@@ -1,3 +1,4 @@
+import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +15,7 @@ export class AlvaraFormComponent implements OnInit {
 
   id: number;
   alvara: Alvara;
+  tipoDoc: any[];
   errors: string[];
 
   constructor(
@@ -26,6 +28,7 @@ export class AlvaraFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarPorId();
+    this.definirComboBox();
   }
 
   listarPorId() {
@@ -42,7 +45,17 @@ export class AlvaraFormComponent implements OnInit {
         });
       }
     });
+  }
 
+
+  definirComboBox() {
+    this.service
+      .obterListaTipoDoc()
+      .subscribe(resposta => {    
+        this.tipoDoc = resposta;
+      }, errorResponse => {
+        console.log(errorResponse);
+      })
   }
 
   onSubmit() {
@@ -61,7 +74,6 @@ export class AlvaraFormComponent implements OnInit {
         });
         console.log(errorResponse);
       })
-
 
   }
 

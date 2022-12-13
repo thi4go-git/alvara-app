@@ -65,5 +65,9 @@ export class AlvaraService {
     return this.http.put<any>(this.apiURL + "/atualizar", alvara);
   }
 
+  obterListaTipoDoc(): Observable<any> {
+    return this.http.get<Alvara>(this.apiURL + "/tipodocumento");
+  }
+
 
 }
