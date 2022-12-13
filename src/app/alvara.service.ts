@@ -36,11 +36,34 @@ export class AlvaraService {
     return this.http.get<any>(this.apiURL + "/nome?" + params.toString());
   }
 
+
+  listarVencidos(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/vencidos?" + params.toString());
+  }
+
+
+  listarSemInformacoes(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/seminformacoes?" + params.toString());
+  }
+
+  listarVencerAte60Dias(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/venceatesessentadias?" + params.toString());
+  }
+
   listarVencerApos60Dias(page, size): Observable<AlvaraPaginator> {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-    return this.http.get<any>(this.apiURL + "/venceApos60dias?" + params.toString());
+    return this.http.get<any>(this.apiURL + "/venceapossessentadias?" + params.toString());
   }
 
   totalArquivos(): Observable<number> {
@@ -55,12 +78,12 @@ export class AlvaraService {
     return this.http.get<number>(this.apiURL + "/totalvencerem60dias");
   }
 
-  totalArquivosVencerApos60Dias(): Observable<number> {
-    return this.http.get<number>(this.apiURL + "/totalvencerapos60dias");
-  }
-
   totalArquivosSemInformacoes(): Observable<number> {
     return this.http.get<number>(this.apiURL + "/totalseminformacoes");
+  }
+
+  totalArquivosVencerApos60Dias(): Observable<number> {
+    return this.http.get<number>(this.apiURL + "/totalvencerapos60dias");
   }
 
   obterArquivoPorId(id: number): Observable<Alvara> {

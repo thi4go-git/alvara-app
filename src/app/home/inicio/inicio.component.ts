@@ -32,10 +32,8 @@ export class InicioComponent implements OnInit {
 
   definirDashboard() {
     this.definirTotalArquivos();
-    this.definirVencidos();
+    this.qtdeVencerApos60Dias();
     this.definirVencerEm60Dias();
-    this.definirVencerApos60Dias();
-    this.definirSemInformacoes();
   }
 
   definirTotalArquivos() {
@@ -75,7 +73,7 @@ export class InicioComponent implements OnInit {
       });
   }
 
-  definirVencerApos60Dias() {
+  qtdeVencerApos60Dias() {
     this.service.totalArquivosVencerApos60Dias()
       .subscribe(resposta => {
         this.venceApos60dias = resposta;

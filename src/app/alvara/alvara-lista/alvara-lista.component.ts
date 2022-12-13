@@ -25,9 +25,8 @@ export class AlvaraListaComponent implements OnInit {
   //
   nome: string = "";
   tipoConsulta: string;
+  listaAlvaras: Alvara[] = [];
 
-
-  lista: Alvara[] = [];
   colunas = ['id', 'tipoDoc', 'nomeArquivo',
     'numeroAlvara', 'nomeEmpresa',
     'cnpjEmpresa', 'dataEmissao', 'dataVencimento', 'expira', 'pdf'];
@@ -49,10 +48,10 @@ export class AlvaraListaComponent implements OnInit {
   listarArquivos(pagina = 0, tamanho = 10) {
     this.service.listarTodos(pagina, tamanho)
       .subscribe(resposta => {
-        this.lista = resposta.content;
+        this.listaAlvaras = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
-        if (this.lista.length == 0) {
+        if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
           });
@@ -69,34 +68,110 @@ export class AlvaraListaComponent implements OnInit {
 
 
   listarPersonalizado(pagina = 0, tamanho = 10) {
+
     this.activatedRoute.params.subscribe(parametro => {
       if (parametro && parametro.tipoConsulta) {
         let consultaParam: String = parametro.tipoConsulta;
-        //
-        if (consultaParam == 'venceApos60dias') {
-          this.service.listarVencerApos60Dias(pagina, tamanho)
-            .subscribe(resposta => {
-              this.lista = resposta.content;
-              this.totalElementos = resposta.totalElements;
-              this.pagina = resposta.number;
-              if (this.lista.length == 0) {
-                this.snackBar.open("Lista Vazia!", "Info!", {
-                  duration: 2000
-                });
-              }
-            }, errorResponse => {
-              console.log(errorResponse);
-              this.snackBar.open("Erro ao Obter listarPersonalizado!", "ERRO!", {
-                duration: 2000
-              });
-
-            }
-            );
+        console.log(consultaParam);
+        if (consultaParam == 'venceApos60dias') {          
+          this.listarVencerApos60Dias(pagina = 0, tamanho = 10);
+        } else {
+          if (consultaParam == 'venceEm60dias') {
+            this.listarVencerAte60Dias();            
+          }
         }
-
-
       }
     });
+  }
+
+
+  listarVencidos(pagina = 0, tamanho = 10) {
+    this.service.listarVencidos(pagina, tamanho)
+      .subscribe(resposta => {
+        this.listaAlvaras = resposta.content;
+        this.totalElementos = resposta.totalElements;
+        this.pagina = resposta.number;
+        if (this.listaAlvaras.length == 0) {
+          this.snackBar.open("Lista Vazia!", "Info!", {
+            duration: 2000
+          });
+        }
+      }, errorResponse => {
+        console.log(errorResponse);
+        this.snackBar.open("Erro ao Obter listarVencidos!", "ERRO!", {
+          duration: 2000
+        });
+
+      }
+      );
+  }
+
+
+  listarSemInformacoes(pagina = 0, tamanho = 10) {
+    this.service.listarSemInformacoes(pagina, tamanho)
+      .subscribe(resposta => {
+        this.listaAlvaras = resposta.content;
+        this.totalElementos = resposta.totalElements;
+        this.pagina = resposta.number;
+        if (this.listaAlvaras.length == 0) {
+          this.snackBar.open("Lista Vazia!", "Info!", {
+            duration: 2000
+          });
+        }
+      }, errorResponse => {
+        console.log(errorResponse);
+        this.snackBar.open("Erro ao Obter listarSemInformacoes!", "ERRO!", {
+          duration: 2000
+        });
+
+      }
+      );
+  }
+
+
+  listarVencerApos60Dias(pagina = 0, tamanho = 10) {
+    this.service.listarVencerApos60Dias(pagina, tamanho)
+      .subscribe(resposta => {
+        this.listaAlvaras = resposta.content;
+        this.totalElementos = resposta.totalElements;
+        this.pagina = resposta.number;
+        console.log(this.listaAlvaras);
+        if (this.listaAlvaras.length == 0) {
+          this.snackBar.open("Lista Vazia!", "Info!", {
+            duration: 2000
+          });
+        }
+      }, errorResponse => {
+        console.log(errorResponse);
+        this.snackBar.open("Erro ao Obter listarVencerApos60Dias!", "ERRO!", {
+          duration: 2000
+        });
+
+      }
+      );
+  }
+
+
+  listarVencerAte60Dias(pagina = 0, tamanho = 10) {
+    this.service.listarVencerAte60Dias(pagina, tamanho)
+      .subscribe(resposta => {
+        this.listaAlvaras = resposta.content;
+        this.totalElementos = resposta.totalElements;
+        this.pagina = resposta.number;
+        console.log(this.listaAlvaras);
+        if (this.listaAlvaras.length == 0) {
+          this.snackBar.open("Lista Vazia!", "Info!", {
+            duration: 2000
+          });
+        }
+      }, errorResponse => {
+        console.log(errorResponse);
+        this.snackBar.open("Erro ao Obter listarVencerAte60Dias!", "ERRO!", {
+          duration: 2000
+        });
+
+      }
+      );
   }
 
 
@@ -109,10 +184,10 @@ export class AlvaraListaComponent implements OnInit {
   consultarAlvaraPorNome(pagina = 0, tamanho = 10) {
     this.service.listarPorNome(pagina, tamanho, this.nome)
       .subscribe(resposta => {
-        this.lista = resposta.content;
+        this.listaAlvaras = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
-        if (this.lista.length == 0) {
+        if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
           });
