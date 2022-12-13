@@ -66,6 +66,21 @@ export class AlvaraService {
     return this.http.get<any>(this.apiURL + "/venceapossessentadias?" + params.toString());
   }
 
+  obterArquivoPorId(id: number): Observable<Alvara> {
+    return this.http.get<Alvara>(this.apiURL + "/" + id);
+  }
+
+
+  atualizarArquivoPorId(alvara: Alvara): Observable<any> {
+    return this.http.put<any>(this.apiURL + "/atualizar", alvara);
+  }
+
+  obterListaTipoDoc(): Observable<any> {
+    return this.http.get<Alvara>(this.apiURL + "/tipodocumento");
+  }
+
+  //-------------------------------------
+
   totalArquivos(): Observable<number> {
     return this.http.get<number>(this.apiURL + "/totalarquivos");
   }
@@ -85,20 +100,6 @@ export class AlvaraService {
   totalArquivosVencerApos60Dias(): Observable<number> {
     return this.http.get<number>(this.apiURL + "/totalvencerapos60dias");
   }
-
-  obterArquivoPorId(id: number): Observable<Alvara> {
-    return this.http.get<Alvara>(this.apiURL + "/" + id);
-  }
-
-
-  atualizarArquivoPorId(alvara: Alvara): Observable<any> {
-    return this.http.put<any>(this.apiURL + "/atualizar", alvara);
-  }
-
-  obterListaTipoDoc(): Observable<any> {
-    return this.http.get<Alvara>(this.apiURL + "/tipodocumento");
-  }
-
 
 
 }
