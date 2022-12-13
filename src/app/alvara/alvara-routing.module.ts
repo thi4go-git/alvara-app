@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: 'lista', component: AlvaraListaComponent },
       { path: 'form', component: AlvaraFormComponent },
       { path: 'form/:id', component: AlvaraFormComponent },
+      { path: 'lista/:tipoConsulta', component: AlvaraListaComponent },
       { path: '', redirectTo: '/alvara/lista', pathMatch: 'full' }
     ]
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AlvaraService } from 'src/app/alvara.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Alvara } from 'src/app/alvara/alvara';
@@ -17,11 +16,12 @@ export class InicioComponent implements OnInit {
   venceApos60dias = 0;
   totaDocumentosSemInfo = 0;
 
+  tipoConsulta: string;
+
 
   listaArquivos: Alvara[] = [];
 
   constructor(
-    private router: Router,
     private service: AlvaraService,
     private snackBar: MatSnackBar
   ) { }

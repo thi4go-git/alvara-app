@@ -1,7 +1,6 @@
-import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlvaraService } from 'src/app/alvara.service';
 import { Alvara } from '../alvara';
 
@@ -19,6 +18,7 @@ export class AlvaraFormComponent implements OnInit {
   errors: string[];
 
   constructor(
+    private router: Router,
     private service: AlvaraService,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar
@@ -51,7 +51,7 @@ export class AlvaraFormComponent implements OnInit {
   definirComboBox() {
     this.service
       .obterListaTipoDoc()
-      .subscribe(resposta => {    
+      .subscribe(resposta => {
         this.tipoDoc = resposta;
       }, errorResponse => {
         console.log(errorResponse);
@@ -67,6 +67,7 @@ export class AlvaraFormComponent implements OnInit {
         this.snackBar.open("Sucesso ao Atualizar!", "Sucesso!", {
           duration: 2000
         });
+        this.router.navigate(['/alvara/lista'])
       }, errorResponse => {
         this.errors = errorResponse.error.errors;
         this.snackBar.open("Erro ao Atualizar Arquivo po ID!", "ERRO!", {

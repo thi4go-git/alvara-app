@@ -36,6 +36,13 @@ export class AlvaraService {
     return this.http.get<any>(this.apiURL + "/nome?" + params.toString());
   }
 
+  listarVencerApos60Dias(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/venceApos60dias?" + params.toString());
+  }
+
   totalArquivos(): Observable<number> {
     return this.http.get<number>(this.apiURL + "/totalarquivos");
   }
@@ -68,6 +75,7 @@ export class AlvaraService {
   obterListaTipoDoc(): Observable<any> {
     return this.http.get<Alvara>(this.apiURL + "/tipodocumento");
   }
+
 
 
 }
