@@ -32,8 +32,33 @@ export class AlvaraService {
     return this.http.get<any>(this.apiURL + "?" + params.toString());
   }
 
+  listarVencidos(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/vencidos?" + params.toString());
+  }
 
+  listarVencerEmAte60Dias(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/vencerate60dias?" + params.toString());
+  }
 
+  listarDocumentosSemInfo(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/seminfo?" + params.toString());
+  }
+
+  listarVencerApos60Dias(page, size): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+    return this.http.get<any>(this.apiURL + "/vencerapos60dias?" + params.toString());
+  }
 
   obterArquivoPorId(id: number): Observable<Alvara> {
     return this.http.get<Alvara>(this.apiURL + "/" + id);
