@@ -29,8 +29,9 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Tipo Documento: </label>
-                        <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="alvara.tipoDoc">
-                            <option *ngFor="let tipo of tipoDoc" [ngValue]="tipo">
+                        <select class="form-control" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="alvara.tipo_doc">                          
+                            <option *ngFor="let tipo of tipo_doc" [ngValue]="tipo">
                                 {{ tipo}}
                             </option>
                         </select>
@@ -42,35 +43,35 @@
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Nome Arquivo: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.nomeArquivo" name="nomeArquivo" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.nome_arquivo" name="nome_arquivo" />
                 </div>
             </div>
 
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Nº Alvará:</label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.numeroAlvara" name="numeroAlvara" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.numero_alvara" name="numero_alvara" />
                 </div>
             </div>
 
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Empresa: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.nomeEmpresa" name="nomeEmpresa" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.nome_empresa" name="nome_empresa" />
                 </div>
             </div>
 
             <div id="col-md-6">
                 <div id="form-group">
                     <label>CNPJ: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.cnpjEmpresa" name="cnpjEmpresa" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.cnpj_empresa" name="cnpj_empresa" />
                 </div>
             </div>
 
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Emissão: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.dataEmissao" name="dataEmissao" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.data_emissao" name="data_emissao" />
                 </div>
             </div>
 
@@ -78,7 +79,7 @@
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Vencimento: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.dataVencimento" name="dataVencimento" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.data_vencimento" name="dataVencimento" />
                 </div>
             </div>
 

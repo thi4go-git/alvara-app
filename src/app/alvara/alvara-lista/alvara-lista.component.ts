@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlvaraService } from 'src/app/alvara.service';
-import { Alvara } from '../alvara';
-
 import { ActivatedRoute } from '@angular/router';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PageEvent } from '@angular/material/paginator';
-import { strict } from 'assert';
+import { Alvara } from '../Alvara';
 
 
 
@@ -40,8 +37,15 @@ export class AlvaraListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listarArquivos();
-    this.listarPersonalizado();
+    this.activatedRoute.params.subscribe(parametro => {
+      if (parametro && parametro.tipoConsulta) {
+        console.log("Consulta Personalizada");
+        this.listarPersonalizado();
+      } else {
+        console.log("Consulta Geral");
+        this.listarArquivos();
+      }
+    });
   }
 
 
@@ -51,13 +55,13 @@ export class AlvaraListaComponent implements OnInit {
         this.listaAlvaras = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
+        console.log(resposta);        
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
           });
         }
       }, responseError => {
-
         console.log(responseError);
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
           duration: 2000
@@ -72,107 +76,17 @@ export class AlvaraListaComponent implements OnInit {
     this.activatedRoute.params.subscribe(parametro => {
       if (parametro && parametro.tipoConsulta) {
         let consultaParam: String = parametro.tipoConsulta;
-        console.log(consultaParam);
-        if (consultaParam == 'venceApos60dias') {          
-          this.listarVencerApos60Dias(pagina = 0, tamanho = 10);
+        if (consultaParam == 'totalVencidos') {
+
         } else {
-          if (consultaParam == 'venceEm60dias') {
-            this.listarVencerAte60Dias();            
+          if (consultaParam == 'totaDocumentosSemInfo') {
+
           }
         }
       }
     });
   }
 
-
-  listarVencidos(pagina = 0, tamanho = 10) {
-    this.service.listarVencidos(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
-            duration: 2000
-          });
-        }
-      }, errorResponse => {
-        console.log(errorResponse);
-        this.snackBar.open("Erro ao Obter listarVencidos!", "ERRO!", {
-          duration: 2000
-        });
-
-      }
-      );
-  }
-
-
-  listarSemInformacoes(pagina = 0, tamanho = 10) {
-    this.service.listarSemInformacoes(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
-            duration: 2000
-          });
-        }
-      }, errorResponse => {
-        console.log(errorResponse);
-        this.snackBar.open("Erro ao Obter listarSemInformacoes!", "ERRO!", {
-          duration: 2000
-        });
-
-      }
-      );
-  }
-
-
-  listarVencerApos60Dias(pagina = 0, tamanho = 10) {
-    this.service.listarVencerApos60Dias(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        console.log(this.listaAlvaras);
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
-            duration: 2000
-          });
-        }
-      }, errorResponse => {
-        console.log(errorResponse);
-        this.snackBar.open("Erro ao Obter listarVencerApos60Dias!", "ERRO!", {
-          duration: 2000
-        });
-
-      }
-      );
-  }
-
-
-  listarVencerAte60Dias(pagina = 0, tamanho = 10) {
-    this.service.listarVencerAte60Dias(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        console.log(this.listaAlvaras);
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
-            duration: 2000
-          });
-        }
-      }, errorResponse => {
-        console.log(errorResponse);
-        this.snackBar.open("Erro ao Obter listarVencerAte60Dias!", "ERRO!", {
-          duration: 2000
-        });
-
-      }
-      );
-  }
 
 
   paginar(event: PageEvent) {
@@ -181,30 +95,23 @@ export class AlvaraListaComponent implements OnInit {
   }
 
 
-  consultarAlvaraPorNome(pagina = 0, tamanho = 10) {
-    this.service.listarPorNome(pagina, tamanho, this.nome)
+  baixar(id: number) {
+    this.service.baixarArquivo(id)
       .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
+        var sampleArr = this.base64ToArrayBuffer(resposta);
+        this.saveByteArray("ARQUIVO.pdf", sampleArr);
         if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
+          this.snackBar.open("Arquivo BAIXADO!", "Info!", {
             duration: 2000
           });
         }
       }, errorResponse => {
         console.log(errorResponse);
-        this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
+        this.snackBar.open("Erro ao BAIXAR Arquivo!", "ERRO!", {
           duration: 2000
         });
-
       }
       );
-  }
-
-  baixar(alvara: Alvara) {
-    var sampleArr = this.base64ToArrayBuffer(alvara.pdf);
-    this.saveByteArray(alvara.nomeArquivo, sampleArr);
   }
 
   base64ToArrayBuffer(base64) {
@@ -226,6 +133,12 @@ export class AlvaraListaComponent implements OnInit {
     link.download = fileName;
     link.click();
   };
+
+
+  consultarAlvaraPorNome() {
+    console.log(this.nome);
+
+  }
 
 }
 

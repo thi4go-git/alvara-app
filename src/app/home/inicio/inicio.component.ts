@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlvaraService } from 'src/app/alvara.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Alvara } from 'src/app/alvara/alvara';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
+
 
 @Component({
   selector: 'app-inicio',
@@ -20,7 +20,7 @@ export class InicioComponent implements OnInit {
   tipoConsulta: string;
 
 
-  listaArquivos: Alvara[] = [];
+
 
   constructor(
     private service: AlvaraService,

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlvaraService } from 'src/app/alvara.service';
-import { Alvara } from '../alvara';
+import { Alvara } from '../Alvara';
+
+
 
 
 @Component({
@@ -14,7 +16,7 @@ export class AlvaraFormComponent implements OnInit {
 
   id: number;
   alvara: Alvara;
-  tipoDoc: any[];
+  tipo_doc: any[];
   errors: string[];
 
   constructor(
@@ -27,22 +29,21 @@ export class AlvaraFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listarPorId();
     this.definirComboBox();
+    this.listarPorId();
   }
 
   listarPorId() {
     this.activatedRoute.params.subscribe(parametro => {
       if (parametro && parametro.id) {
         this.id = parametro.id;
-        this.service.obterArquivoPorId(this.id).subscribe(response => {
-          this.alvara = response;
-        }, responseError => {
-          console.log(responseError);
-          this.snackBar.open("Erro ao Obter Arquivo po ID!", "ERRO!", {
-            duration: 2000
-          });
-        });
+        this.service
+          .obterArquivoPorId(this.id)
+          .subscribe(resposta => {
+            this.alvara = resposta;
+          }, errorResponse => {
+            console.log(errorResponse);
+          })
       }
     });
   }
@@ -52,7 +53,7 @@ export class AlvaraFormComponent implements OnInit {
     this.service
       .obterListaTipoDoc()
       .subscribe(resposta => {
-        this.tipoDoc = resposta;
+        this.tipo_doc = resposta;
       }, errorResponse => {
         console.log(errorResponse);
       })
@@ -63,18 +64,15 @@ export class AlvaraFormComponent implements OnInit {
     this.service
       .atualizarArquivoPorId(this.alvara)
       .subscribe(resposta => {
-        console.log(resposta);
-        this.snackBar.open("Sucesso ao Atualizar!", "Sucesso!", {
+        this.snackBar.open("SUCESSO Ao Atualizar Informações!", "SUCESSO!", {
           duration: 2000
         });
         this.router.navigate(['/alvara/lista'])
       }, errorResponse => {
-        this.errors = errorResponse.error.errors;
-        this.snackBar.open("Erro ao Atualizar Arquivo po ID!", "ERRO!", {
-          duration: 2000
-        });
+        console.log("Erro");
         console.log(errorResponse);
       })
+
 
   }
 

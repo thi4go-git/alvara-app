@@ -26,7 +26,7 @@ export class PreferenciasFormComponent implements OnInit {
         const pdf = listaArquivos[index];
         const formData: FormData = new FormData();
         formData.append("pdf", pdf);
-        this.upload(formData);    
+        this.upload(formData);
       }
       this.snackBar.open("Processo Concluído!", "Sucesso!", {
         duration: 3000
@@ -38,9 +38,9 @@ export class PreferenciasFormComponent implements OnInit {
   upload(formData: FormData) {
     this.service.uploadPdf(formData)
       .subscribe(response => {
-        console.log("Sucesso UPLOAD " + response);
+        console.log("Sucesso UPLOAD===>" + response);
       }, responseError => {
-        console.log("Erro UPLOAD " + responseError);
+        console.log("Erro UPLOAD ===>" + responseError);
       });
   }
 

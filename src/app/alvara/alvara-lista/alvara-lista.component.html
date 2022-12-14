@@ -53,13 +53,13 @@
             <tbody>
                 <tr *ngFor="let alvara of listaAlvaras">
                     <td>{{ alvara.id }}</td>
-                    <td>{{ alvara.tipoDoc }}</td>
-                    <td>{{ alvara.nomeArquivo }}</td>
-                    <td>{{ alvara.numeroAlvara }}</td>
-                    <td>{{ alvara.nomeEmpresa }}</td>
-                    <td>{{ alvara.cnpjEmpresa }}</td>
-                    <td>{{ alvara.dataEmissao }}</td>
-                    <td>{{ alvara.dataVencimento }}</td>
+                    <td>{{ alvara.tipo_doc }}</td>
+                    <td>{{ alvara.nome_arquivo }}</td>
+                    <td>{{ alvara.numero_alvara }}</td>
+                    <td>{{ alvara.nome_empresa }}</td>
+                    <td>{{ alvara.cnpj_empresa }}</td>
+                    <td>{{ alvara.data_emissao }}</td>
+                    <td>{{ alvara.data_vencimento }}</td>
                     <td>{{ alvara.expira}}</td>
                     <td>
                         <button type="button" class="btn btn-primary" (click)="baixar(alvara)">
@@ -67,7 +67,7 @@
                         </button>
                     </td>
                     <td>
-                        <a routerLink="/alvara/form/{{ alvara.id }}" *ngIf="!alvara.dataEmissao">
+                        <a routerLink="/alvara/form/{{ alvara.id }}" *ngIf="!alvara.data_emissao">
                             <mat-icon>edit</mat-icon>
                         </a>
                     </td>

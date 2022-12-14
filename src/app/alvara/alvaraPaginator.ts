@@ -1,4 +1,4 @@
-import { Alvara } from "./alvara";
+import { Alvara } from "./Alvara";
 
 export class AlvaraPaginator {
     content: Alvara[];
