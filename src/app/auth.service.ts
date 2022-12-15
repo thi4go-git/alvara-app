@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { environment } from '../environments/environment'
 
 
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
@@ -58,6 +59,7 @@ export class AuthService {
     const token = this.obterTokenStorage();
     if (token) {
       const usuario = this.jwtHelper.decodeToken(token).user_name
+      //  
       return usuario;
     }
   }

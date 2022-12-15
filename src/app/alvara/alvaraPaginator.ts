@@ -5,4 +5,6 @@ export class AlvaraPaginator {
     totalElements: number;
     size: number;
     number: number;
+    //
+    numberOfElements: number;
 }

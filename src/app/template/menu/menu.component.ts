@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router 
   ) { }
 
   ngOnInit(): void {

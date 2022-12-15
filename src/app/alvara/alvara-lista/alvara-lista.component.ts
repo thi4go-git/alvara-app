@@ -19,6 +19,7 @@ export class AlvaraListaComponent implements OnInit {
   pagina;
   tamanho;
   pageSizeOptions: number[] = [10];
+  qtdeRegistros: number;
   //
   nome: string = "";
   tipoConsulta: string;
@@ -55,6 +56,10 @@ export class AlvaraListaComponent implements OnInit {
         this.listaAlvaras = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
+        this.qtdeRegistros = this.listaAlvaras.length;
+        console.log("pagina  " + this.pagina);
+        console.log("tamanho  " + this.tamanho);
+        console.log("totalElementos  " +this.totalElementos  );
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -103,6 +108,10 @@ export class AlvaraListaComponent implements OnInit {
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+        console.log("pagina  " + this.pagina);
+        console.log("tamanho  " + this.tamanho);
+        console.log("totalElementos  " + this.listaAlvaras.length);
+        this.qtdeRegistros = this.listaAlvaras.length;
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -125,6 +134,7 @@ export class AlvaraListaComponent implements OnInit {
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+        this.qtdeRegistros = this.listaAlvaras.length;
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -146,6 +156,7 @@ export class AlvaraListaComponent implements OnInit {
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+        this.qtdeRegistros = this.listaAlvaras.length;
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -167,6 +178,7 @@ export class AlvaraListaComponent implements OnInit {
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+        this.qtdeRegistros = this.listaAlvaras.length;
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
