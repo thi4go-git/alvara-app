@@ -11,7 +11,6 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-
   listarTodos(page, size): Observable<UsuarioPaginator> {
     const params = new HttpParams()
       .set('page', page)
@@ -21,6 +20,10 @@ export class UsuarioService {
 
   uploadFoto(id: number, formData: FormData): Observable<any> {
     return this.http.put(this.apiURL + '/foto/' + id, formData, { responseType: 'blob' });
+  }
+
+  ativarUsuario(id: number): Observable<any> {
+    return this.http.patch(this.apiURL + "/ativar/" + id, null);
   }
 
 

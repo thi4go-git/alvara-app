@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { UsuarioService } from 'src/app/usuario.service';
 import { Usuario } from '../Usuario';
@@ -14,8 +15,8 @@ import { Usuario } from '../Usuario';
 export class UsuarioListComponent implements OnInit {
   constructor(private service: UsuarioService,
     private snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute,
     private authService: AuthService,
+    private router: Router
   ) {
 
   }
@@ -38,14 +39,12 @@ export class UsuarioListComponent implements OnInit {
   }
 
   listarUsuarios(pagina = 0, tamanho = 10) {
-
     this.service.listarTodos(pagina, tamanho)
       .subscribe(resposta => {
         this.listaUsuarios = resposta.content;
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.qtdeRegistros = this.listaUsuarios.length;
-
         for (let cont = 0; cont < this.listaUsuarios.length; cont++) {
           let user = this.listaUsuarios[cont];
           let roles: string[] = [user.role];
@@ -65,11 +64,23 @@ export class UsuarioListComponent implements OnInit {
       });
   }
 
-  ativar(usuario: Usuario) {
-    console.log(usuario.nome);
+
+
+  ativarDesativar(usuario: Usuario) {
+    this.service.ativarUsuario(usuario.id)
+      .subscribe(resposta => {
+        console.log("favoritado");
+        console.log(resposta);
+      }, erro => {
+        console.log('Errro');
+        console.log(erro);
+      });
+
+    this.router.navigate(['/preferencias/form'])
   }
 
-  uploadFoto(event, usuario) {
+
+  uploadFoto(event, usuario: Usuario) {
     const files = event.target.files;
     if (files) {
       const foto = files[0];
@@ -85,6 +96,12 @@ export class UsuarioListComponent implements OnInit {
         });
     }
   }
+
+  paginar(event: PageEvent) {
+    this.pagina = event.pageIndex;
+    this.listarUsuarios(this.pagina, this.tamanho);
+  }
+
 
 
 

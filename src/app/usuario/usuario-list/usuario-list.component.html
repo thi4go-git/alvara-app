@@ -49,7 +49,7 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.celular }}</td>
                         <td>
-                            <a href="#" (click)="ativar(usuario)">
+                            <a href="#" (click)="ativarDesativar(usuario)">
                                 <mat-icon>
                                     {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
                                 </mat-icon>
@@ -67,9 +67,6 @@
                     </tr>
                 </tbody>
             </table>
-
-
-
         </div>
     </div>
 </div>
