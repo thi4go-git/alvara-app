@@ -10,8 +10,6 @@ import { environment } from '../environments/environment'
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-
-
   apiURL: string = environment.apiUrl + "/oauth/token";
 
   jwtHelper: JwtHelperService;
@@ -63,12 +61,22 @@ export class AuthService {
     }
   }
 
-  getAuthorities() {
+  getAuthoritiesToken() {
     const token = this.obterTokenStorage();
     if (token) {
       const authorities = this.jwtHelper.decodeToken(token).authorities;
-      return this.jwtHelper.decodeToken(token).authorities;
+      return authorities;
     }
+  }
+
+  isAdmin(authorities: string[]) {
+    for (let cont = 0; cont < authorities.length; cont++) {
+      let role = authorities[cont];
+      if (role == "ROLE_ADMIN" || role == "ADMIN") {
+        return true;
+      }
+    }
+    return false;
   }
 
 

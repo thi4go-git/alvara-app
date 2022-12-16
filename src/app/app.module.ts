@@ -16,6 +16,8 @@ import { AuthService } from './auth.service';
 import { TokenInterceptor } from './token.interceptor';
 import { PreferenciasModule } from './preferencias/preferencias.module';
 import { HomeModule } from './home/home.module';
+import { UsuarioModule } from './usuario/usuario.module';
+import { UsuarioService } from './usuario.service';
 
 
 
@@ -34,11 +36,13 @@ import { HomeModule } from './home/home.module';
     TemplateModule,
     AlvaraModule,
     PreferenciasModule,
-    HomeModule
+    HomeModule,
+    UsuarioModule
   ],
   providers: [
     AlvaraService,
     AuthService,
+    UsuarioService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

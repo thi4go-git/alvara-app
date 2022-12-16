@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { UsuarioModule } from '../usuario/usuario.module';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatIconModule,
     MatSnackBarModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    UsuarioModule
   ]
 })
 export class PreferenciasModule { }

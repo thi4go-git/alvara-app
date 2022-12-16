@@ -22,14 +22,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioLogado = this.authService.getUsuarioAutenticado();
-    this.authorities = this.authService.getAuthorities();
-    for (let cont = 0; cont < this.authorities.length; cont++) {
-      let role = this.authorities[cont];
-      if (role == "ROLE_ADMIN") {
-        this.administrador = true;
-        break;
-      }
-    }
+    this.authorities = this.authService.getAuthoritiesToken();
+    this.administrador = this.authService.isAdmin(this.authorities);
   }
 
   logout() {
