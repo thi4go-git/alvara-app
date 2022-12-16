@@ -15,7 +15,7 @@
                     Alvarás
                 </a>
 
-                <a class="nav-link active" routerLink="/preferencias/form">
+                <a class="nav-link active" routerLink="/preferencias/form" *ngIf="administrador">
                     <mat-icon>settings_applications</mat-icon>
                     Preferências
                 </a>
@@ -38,7 +38,7 @@
                 <mat-icon>perm_identity</mat-icon>
                 Usuário logado:
             </div>
-            {{ usuarioLogado }}
+            {{ usuarioLogado }} - {{ authorities }}
         </div>
     </nav>
 </div>

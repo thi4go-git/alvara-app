@@ -23,12 +23,12 @@ export class LoginComponent {
   onSubmit() {
     this.authService
       .obterToken(this.username, this.password)
-      .subscribe(response => {
+      .subscribe(response => {    
         const access_token = JSON.stringify(response);
         localStorage.setItem('access_token', access_token);
         this.router.navigate(['/home/inicio'])
       }, errorResponse => {
-        this.loginError = true;  
+        this.loginError = true;
         this.erros = [errorResponse.error.error_description];
       }
       )

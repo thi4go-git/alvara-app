@@ -59,8 +59,15 @@ export class AuthService {
     const token = this.obterTokenStorage();
     if (token) {
       const usuario = this.jwtHelper.decodeToken(token).user_name
-      //  
       return usuario;
+    }
+  }
+
+  getAuthorities() {
+    const token = this.obterTokenStorage();
+    if (token) {
+      const authorities = this.jwtHelper.decodeToken(token).authorities;
+      return this.jwtHelper.decodeToken(token).authorities;
     }
   }
 
