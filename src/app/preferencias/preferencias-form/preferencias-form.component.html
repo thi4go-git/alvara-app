@@ -1,13 +1,43 @@
-<mat-card>
-    <p>
-        <mat-toolbar>
-            <span>
-                <mat-icon>settings</mat-icon>Processar Arquivos PDF
-            </span>
-        </mat-toolbar>
-    </p>
-    <form>
-        <input type="file" name="pdf" multiple (change)="uploadPdf($event)"
-            data-allowed-file-extensions='["pdf"]' />
-    </form>
-</mat-card>
+<p>
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Preferências </span>
+    </mat-toolbar>
+</p>
+
+<mat-tab-group>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>supervisor_account</mat-icon>
+            Usuários
+        </ng-template>
+
+        aq
+    </mat-tab>
+
+    <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>settings</mat-icon>
+            Preferências
+        </ng-template>
+
+        <mat-card>
+            <p>
+                <mat-toolbar>
+                    <span>
+                        <mat-icon>settings</mat-icon>Processar Arquivos PDF / Upload
+                    </span>
+                </mat-toolbar>
+            </p>
+            <form>
+                <input type="file" name="pdf" multiple (change)="uploadPdf($event)"
+                    data-allowed-file-extensions='["pdf"]' />
+            </form>
+        </mat-card>
+    </mat-tab>
+
+</mat-tab-group>
