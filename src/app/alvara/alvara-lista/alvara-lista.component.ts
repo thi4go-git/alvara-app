@@ -57,9 +57,6 @@ export class AlvaraListaComponent implements OnInit {
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.qtdeRegistros = this.listaAlvaras.length;
-        console.log("pagina  " + this.pagina);
-        console.log("tamanho  " + this.tamanho);
-        console.log("totalElementos  " +this.totalElementos  );
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -108,9 +105,6 @@ export class AlvaraListaComponent implements OnInit {
         this.totalElementos = resposta.totalElements;
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
-        console.log("pagina  " + this.pagina);
-        console.log("tamanho  " + this.tamanho);
-        console.log("totalElementos  " + this.listaAlvaras.length);
         this.qtdeRegistros = this.listaAlvaras.length;
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
@@ -193,24 +187,15 @@ export class AlvaraListaComponent implements OnInit {
   }
 
   paginar(event: PageEvent) {
-
-    this.activatedRoute.params.subscribe(parametro => {
-      if (parametro && parametro.tipoConsulta) {
-        console.log("PAGINAR PERSONALIZADO");
-        this.listarPersonalizado(this.pagina, this.tamanho);
-      } else {
-        console.log("PAGINAR GERAL");
-        this.listarArquivos(this.pagina, this.tamanho);
-      }
-    });
-
+    this.pagina = event.pageIndex;
+    this.listarArquivos(this.pagina, this.tamanho);
   }
 
 
-  baixar(id: number) {
-    this.service.baixarArquivo(id)
+  baixar(alvara: Alvara) {
+    this.service.obterArquivoPorId(alvara.id)
       .subscribe(resposta => {
-        var sampleArr = this.base64ToArrayBuffer(resposta);
+        var sampleArr = this.base64ToArrayBuffer(resposta.pdf);
         this.saveByteArray("ARQUIVO.pdf", sampleArr);
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Arquivo BAIXADO!", "Info!", {
@@ -249,7 +234,6 @@ export class AlvaraListaComponent implements OnInit {
 
   consultarAlvaraPorNome() {
     console.log(this.nome);
-
   }
 
 }

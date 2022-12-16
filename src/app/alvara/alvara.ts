@@ -8,4 +8,6 @@ export class Alvara {
     data_emissao: any;
     data_vencimento: any;
     expira: number;
+    //
+    pdf :any;
 }

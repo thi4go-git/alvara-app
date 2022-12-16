@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AlvaraPaginator } from './alvara/alvaraPaginator';
@@ -29,7 +29,7 @@ export class AlvaraService {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-    return this.http.get<any>(this.apiURL + "?" + params.toString());
+    return this.http.get<AlvaraPaginator>(this.apiURL + "?" + params.toString());
   }
 
   listarVencidos(page, size): Observable<AlvaraPaginator> {
