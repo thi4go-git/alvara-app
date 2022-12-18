@@ -8,7 +8,7 @@
 
         <div id="row">
             <div id="col-md-12">
-                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of listaErros">
                     {{ erro }}
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label>Tipo Documento: </label>
                         <select class="form-control" [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="alvara.tipo_doc">                          
+                            [(ngModel)]="alvara.tipo_doc">
                             <option *ngFor="let tipo of tipo_doc" [ngValue]="tipo">
                                 {{ tipo}}
                             </option>
@@ -68,20 +68,32 @@
                 </div>
             </div>
 
+
+            <br />
             <div id="col-md-6">
                 <div id="form-group">
-                    <label>Emissão: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.data_emissao" name="data_emissao" />
+                    <label>Data de Emissão</label>
+                    <input matInput [matDatepicker]="dataInicio" disabled name="dataInicio"
+                        [(ngModel)]="alvara.data_emissao" placeholder="Data emissão">
+                    <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
+                    <mat-datepicker #dataInicio disabled="false"></mat-datepicker>
                 </div>
             </div>
+            <br />
+
+
+
 
 
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Vencimento: </label>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.data_vencimento" name="dataVencimento" />
+                    <input type="text" class="form-control" [(ngModel)]="alvara.data_vencimento"
+                        name="dataVencimento" />
                 </div>
             </div>
+
+
 
             <div id="col-md-6">
                 <div id="form-group">
@@ -100,7 +112,6 @@
                 <button type="submit" class="btn btn-primary" *ngIf="alvara.id">
                     <i class="fa fa-sync-alt"></i>Atualizar
                 </button>
-
             </div>
         </div>
 

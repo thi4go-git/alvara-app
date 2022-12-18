@@ -17,7 +17,9 @@ export class AlvaraFormComponent implements OnInit {
   id: number;
   alvara: Alvara;
   tipo_doc: any[];
-  errors: string[];
+  listaErros: string[];
+  //
+  dataTeste: Date;
 
   constructor(
     private router: Router,
@@ -60,20 +62,25 @@ export class AlvaraFormComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.alvara);
 
+  }
+
+  atualizar() {
     this.service
       .atualizarArquivoPorId(this.alvara)
       .subscribe(resposta => {
+        console.log(resposta);
         this.snackBar.open("SUCESSO Ao Atualizar Informações!", "SUCESSO!", {
           duration: 2000
         });
         this.router.navigate(['/alvara/lista'])
       }, errorResponse => {
-        console.log("Erro");
-        console.log(errorResponse);
+        this.snackBar.open("ERRO Ao Atualizar Informações!", "ERRO!", {
+          duration: 2000
+        });
+        this.listaErros = errorResponse.error.erros
       })
-
-
   }
 
 }

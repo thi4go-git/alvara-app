@@ -17,6 +17,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgModule } from '@angular/core';
 import { AlvaraFormComponent } from './alvara-form/alvara-form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -34,7 +36,9 @@ import { AlvaraFormComponent } from './alvara-form/alvara-form.component';
     MatTabsModule,
     MatCardModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AlvaraModule { }

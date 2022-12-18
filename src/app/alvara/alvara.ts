@@ -5,8 +5,8 @@ export class Alvara {
     numero_alvara: string;
     nome_empresa: string;
     cnpj_empresa: string;
-    data_emissao: any;
-    data_vencimento: any;
+    data_emissao: Date;
+    data_vencimento: Date;
     expira: number;
     //
     pdf :any;

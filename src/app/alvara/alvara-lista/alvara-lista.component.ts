@@ -232,8 +232,25 @@ export class AlvaraListaComponent implements OnInit {
   };
 
 
-  consultarAlvaraPorNome() {
-    console.log(this.nome);
+  consultarAlvaraPorNome(pagina = 0, tamanho = 10) {
+    this.service.listarTodosPorNome(pagina, tamanho, this.nome)
+      .subscribe(resposta => {
+        this.listaAlvaras = resposta.content;
+        this.totalElementos = resposta.totalElements;
+        this.pagina = resposta.number;
+        this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+        this.qtdeRegistros = this.listaAlvaras.length;
+        console.log(this.listaAlvaras);        
+        if (this.listaAlvaras.length == 0) {
+          this.snackBar.open("Lista Vazia!", "Info!", {
+            duration: 2000
+          });
+        }
+      }, responseError => {
+        this.snackBar.open("Erro ao Listar por nome!", "Erro!", {
+          duration: 2000
+        });
+      });
   }
 
 }

@@ -32,6 +32,17 @@ export class AlvaraService {
     return this.http.get<AlvaraPaginator>(this.apiURL + "?" + params.toString());
   }
 
+
+
+  listarTodosPorNome(page, size, nome): Observable<AlvaraPaginator> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+      .set('nome', nome)
+    return this.http.get<AlvaraPaginator>(this.apiURL + "/listarpornome?" + params.toString());
+  }
+
+
   listarVencidos(page, size): Observable<AlvaraPaginator> {
     const params = new HttpParams()
       .set('page', page)
