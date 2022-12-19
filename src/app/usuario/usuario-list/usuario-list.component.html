@@ -5,7 +5,7 @@
 <div class="container">
     <div id="row">
         <div id="col-md-2">
-            <button class="btn btn-warning">
+            <button class="btn btn-warning" (click)="teste()">
                 <i class="fa fa-plus"></i>Novo
             </button>
         </div>
@@ -49,14 +49,14 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.celular }}</td>
                         <td>
-                            <a href="#" (click)="ativarDesativar(usuario)">
+                            <a href="/preferencias/form" (click)="ativarDesativar(usuario)">
                                 <mat-icon>
                                     {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
                                 </mat-icon>
                             </a>
                         </td>
                         <td>
-                            <a href="#">
+                            <a href="/preferencias/form" (click)="ativarDesativarAdm(usuario)">
                                 <mat-icon>
                                     {{ usuario.admin ? 'thumb_up' : 'thumb_down' }}
                                 </mat-icon>

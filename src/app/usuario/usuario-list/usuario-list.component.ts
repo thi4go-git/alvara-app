@@ -3,6 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { LoginComponent } from 'src/app/login/login.component';
 import { UsuarioService } from 'src/app/usuario.service';
 import { Usuario } from '../Usuario';
 
@@ -38,6 +39,13 @@ export class UsuarioListComponent implements OnInit {
     this.listarUsuarios();
   }
 
+  teste() {
+    this.snackBar.open("btn", "btn!", {
+      duration: 2000
+    });
+  }
+
+
   listarUsuarios(pagina = 0, tamanho = 10) {
     this.service.listarTodos(pagina, tamanho)
       .subscribe(resposta => {
@@ -69,13 +77,29 @@ export class UsuarioListComponent implements OnInit {
   ativarDesativar(usuario: Usuario) {
     this.service.ativarUsuario(usuario.id)
       .subscribe(resposta => {
-        console.log("favoritado");
         console.log(resposta);
+        this.snackBar.open("SUCESSO!", "SUCESSO!", {
+          duration: 2000
+        });
       }, erro => {
-        console.log('Errro');
+        console.log('erro ativarDesativar');
         console.log(erro);
       });
+    this.router.navigate(['/preferencias/form'])
+  }
 
+  ativarDesativarAdm(usuario: Usuario) {
+    this.service.ativarUsuarioAdm(usuario.id)
+      .subscribe(resposta => {
+        console.log(resposta);
+        
+        this.snackBar.open("SUCESSO!", "SUCESSO!", {
+          duration: 2000
+        });
+      }, erro => {
+        console.log('erro ativarDesativarAdm');
+        console.log(erro);
+      });
     this.router.navigate(['/preferencias/form'])
   }
 

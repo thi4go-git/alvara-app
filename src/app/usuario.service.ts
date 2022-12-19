@@ -26,5 +26,7 @@ export class UsuarioService {
     return this.http.patch(this.apiURL + "/ativar/" + id, null);
   }
 
-
+  ativarUsuarioAdm(id: number): Observable<any> {
+    return this.http.patch(this.apiURL + "/ativardesativaradm/" + id, null);
+  }
 }
