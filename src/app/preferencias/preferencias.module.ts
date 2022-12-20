@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UsuarioModule } from '../usuario/usuario.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -25,7 +26,8 @@ import { UsuarioModule } from '../usuario/usuario.module';
     MatSnackBarModule,
     MatInputModule,
     MatTabsModule,
-    UsuarioModule
+    UsuarioModule,
+    MatProgressBarModule
   ]
 })
 export class PreferenciasModule { }

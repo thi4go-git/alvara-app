@@ -16,29 +16,34 @@ export class PreferenciasFormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
+  mostraProgresso: boolean = false;
 
   uploadPdf(event) {
     const files = event.target.files;
-    if (files) {
+    if (files) {  
       let listaArquivos: File[] = [];
       listaArquivos = files;
-      for (let index = 0; index < listaArquivos.length; index++) {
+      let index;
+      this.mostraProgresso = true;
+      for (index = 0; index < listaArquivos.length; index++) {
         const pdf = listaArquivos[index];
         const formData: FormData = new FormData();
         formData.append("pdf", pdf);
         this.upload(formData);
       }
+      this.mostraProgresso = false;
       this.snackBar.open("Processo Concluído!", "Sucesso!", {
         duration: 3000
-      });
+      });   
       this.router.navigate(['/preferencias/form']);
     }
   }
 
-  upload(formData: FormData) {
+
+  upload(formData: FormData) { 
     this.service.uploadPdf(formData)
       .subscribe(response => {
-        console.log("Sucesso UPLOAD===>" + response);
+        console.log("Sucesso UPLOAD===>" + response);     
       }, responseError => {
         console.log("Erro UPLOAD ===>" + responseError);
       });

@@ -14,6 +14,7 @@ import { Alvara } from '../Alvara';
 })
 export class AlvaraListaComponent implements OnInit {
 
+  mostraProgresso: boolean = false;
 
   totalElementos = 0;
   pagina;
@@ -51,6 +52,7 @@ export class AlvaraListaComponent implements OnInit {
 
 
   listarArquivos(pagina = 0, tamanho = 10) {
+    this.mostraProgresso = true;
     this.service.listarTodos(pagina, tamanho)
       .subscribe(resposta => {
         this.listaAlvaras = resposta.content;
@@ -62,6 +64,7 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, responseError => {
         console.log(responseError);
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
@@ -99,6 +102,7 @@ export class AlvaraListaComponent implements OnInit {
 
   listarVencidos(pagina = 0, tamanho = 10) {
     console.log("totalVencidos");
+    this.mostraProgresso = true;
     this.service.listarVencidos(pagina, tamanho)
       .subscribe(resposta => {
         this.listaAlvaras = resposta.content;
@@ -111,6 +115,7 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, responseError => {
         console.log(responseError);
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
@@ -121,6 +126,7 @@ export class AlvaraListaComponent implements OnInit {
 
 
   listarVencerEmAte60Dias(pagina = 0, tamanho = 10) {
+    this.mostraProgresso = true;
     console.log("listarVencerEmAte60Dias");
     this.service.listarVencerEmAte60Dias(pagina, tamanho)
       .subscribe(resposta => {
@@ -134,6 +140,7 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, responseError => {
         console.log(responseError);
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
@@ -143,6 +150,7 @@ export class AlvaraListaComponent implements OnInit {
   }
 
   listarDocumentosSemInfo(pagina = 0, tamanho = 10) {
+    this.mostraProgresso = true;
     console.log("listarDocumentosSemInfo");
     this.service.listarDocumentosSemInfo(pagina, tamanho)
       .subscribe(resposta => {
@@ -156,6 +164,7 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, responseError => {
         console.log(responseError);
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
@@ -166,6 +175,7 @@ export class AlvaraListaComponent implements OnInit {
 
   listarVencerApos60Dias(pagina = 0, tamanho = 10) {
     console.log("listarVencerApos60Dias");
+    this.mostraProgresso = true;
     this.service.listarVencerApos60Dias(pagina, tamanho)
       .subscribe(resposta => {
         this.listaAlvaras = resposta.content;
@@ -178,12 +188,14 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, responseError => {
         console.log(responseError);
         this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
           duration: 2000
         });
       });
+
   }
 
   paginar(event: PageEvent) {
@@ -193,6 +205,7 @@ export class AlvaraListaComponent implements OnInit {
 
 
   baixar(alvara: Alvara) {
+    this.mostraProgresso = true;
     this.service.obterArquivoPorId(alvara.id)
       .subscribe(resposta => {
         var sampleArr = this.base64ToArrayBuffer(resposta.pdf);
@@ -202,6 +215,7 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, errorResponse => {
         console.log(errorResponse);
         this.snackBar.open("Erro ao BAIXAR Arquivo!", "ERRO!", {
@@ -233,6 +247,7 @@ export class AlvaraListaComponent implements OnInit {
 
 
   consultarAlvaraPorNome(pagina = 0, tamanho = 10) {
+    this.mostraProgresso = true;
     this.service.listarTodosPorNome(pagina, tamanho, this.nome)
       .subscribe(resposta => {
         this.listaAlvaras = resposta.content;
@@ -240,7 +255,7 @@ export class AlvaraListaComponent implements OnInit {
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
         this.qtdeRegistros = this.listaAlvaras.length;
-        console.log(this.listaAlvaras);        
+        console.log(this.listaAlvaras);
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
@@ -251,6 +266,7 @@ export class AlvaraListaComponent implements OnInit {
           duration: 2000
         });
       });
+    this.mostraProgresso = false;
   }
 
 }

@@ -3,7 +3,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
-import { LoginComponent } from 'src/app/login/login.component';
 import { UsuarioService } from 'src/app/usuario.service';
 import { Usuario } from '../Usuario';
 
@@ -22,6 +21,8 @@ export class UsuarioListComponent implements OnInit {
 
   }
 
+  usuarioUpdate: Usuario;
+  //
   totalElementos = 0;
   pagina;
   tamanho;
@@ -92,7 +93,7 @@ export class UsuarioListComponent implements OnInit {
     this.service.ativarUsuarioAdm(usuario.id)
       .subscribe(resposta => {
         console.log(resposta);
-        
+
         this.snackBar.open("SUCESSO!", "SUCESSO!", {
           duration: 2000
         });
@@ -126,6 +127,9 @@ export class UsuarioListComponent implements OnInit {
     this.listarUsuarios(this.pagina, this.tamanho);
   }
 
+  prepararUsuarioUpdate(usuario: Usuario) {
+    this.usuarioUpdate = usuario;
+  }
 
 
 

@@ -21,10 +21,14 @@
 
         <ng-template mat-tab-label>
             <mat-icon>settings</mat-icon>
-            Preferências
+            Preferências PDF
         </ng-template>
 
         <mat-card>
+            <div *ngIf="mostraProgresso">
+                Aguarde Processando arquivos...
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
             <p>
                 <mat-toolbar>
                     <span>
@@ -34,9 +38,8 @@
             </p>
             <form>
                 <input type="file" name="pdf" multiple (change)="uploadPdf($event)"
-                    data-allowed-file-extensions='["pdf"]' />
+                    data-allowed-file-extensions='["pdf"]'  />           
             </form>
         </mat-card>
     </mat-tab>
-
 </mat-tab-group>
