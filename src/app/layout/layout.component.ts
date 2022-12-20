@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
+import * as $ from 'jquery';
 
-import jQuery from 'jquery'
+
 
 @Component({
   selector: 'app-layout',
@@ -15,26 +16,21 @@ export class LayoutComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-
     (function ($) {
       "use strict";
-
       // Add active state to sidbar nav links
       var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
       $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function () {
-        if (this.href === path) {
+        if (this instanceof HTMLAnchorElement && this.href === path) {
           $(this).addClass("active");
         }
       });
-
       // Toggle the side navigation
-      $("#sidebarToggle").on("click", function (e) {
+      $("#sidebarToggle").on("click", function (e: { preventDefault: () => void; }) {
         e.preventDefault();
         $("body").toggleClass("sb-sidenav-toggled");
       });
     })(jQuery);
-
-
   }
 
 }

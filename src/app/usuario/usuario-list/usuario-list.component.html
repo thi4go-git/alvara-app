@@ -34,8 +34,7 @@
                     <tr *ngFor="let usuario of listaUsuarios">
                         <td>
                             <div *ngIf="usuario.foto">
-                                <a href="#" (click)="prepararUsuarioUpdate(usuario)" data-toggle="modal"
-                                    data-target="#modalUploadfoto">
+                                <a href="/preferencias/form" (click)="prepararUsuarioUpdate(usuario)">
                                     <img width="50" height="50" src="data:image/jpeg;base64,{{ usuario.foto }}" />
                                 </a>
                             </div>
@@ -65,29 +64,19 @@
                                 </mat-icon>
                             </a>
                         </td>
-
-                        <td></td>
+                        <td>
+                            <a href="/preferencias/form">
+                                <mat-icon>edit</mat-icon>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/preferencias/form">
+                                <mat-icon>delete</mat-icon>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
-
-
-<div id="modalUploadfoto" class="modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Alterar Foto: </h4>
-            </div>
-            <div class="modal-body" *ngIf="usuarioUpdate">
-                {{ usuarioUpdate.nome }}
-                <input type="file" name="foto" (change)="uploadFoto($event,usuarioUpdate)" />
-            </div>
-            <div class="modal-footer">
-                footer s
-            </div>
         </div>
     </div>
 </div>

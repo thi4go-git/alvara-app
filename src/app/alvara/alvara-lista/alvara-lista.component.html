@@ -8,7 +8,8 @@
 
 <div *ngIf="mostraProgresso">
     Aguarde Processando arquivos...
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" class="progress">
+    </mat-progress-bar>
 </div>
 
 <form form #form="ngForm" (submit)="consultarAlvaraPorNome()">
@@ -71,7 +72,7 @@
                         </button>
                     </td>
                     <td>
-                        <a routerLink="/alvara/form/{{ alvara.id }}" >
+                        <a routerLink="/alvara/form/{{ alvara.id }}">
                             <mat-icon>edit</mat-icon>
                         </a>
                     </td>

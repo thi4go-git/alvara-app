@@ -261,6 +261,7 @@ export class AlvaraListaComponent implements OnInit {
             duration: 2000
           });
         }
+        this.mostraProgresso = false;
       }, responseError => {
         this.snackBar.open("Erro ao Listar por nome!", "Erro!", {
           duration: 2000
