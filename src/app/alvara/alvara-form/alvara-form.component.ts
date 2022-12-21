@@ -6,7 +6,6 @@ import { Alvara } from '../Alvara';
 
 
 
-
 @Component({
   selector: 'app-alvara-form',
   templateUrl: './alvara-form.component.html',
@@ -26,6 +25,7 @@ export class AlvaraFormComponent implements OnInit {
     private service: AlvaraService,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar
+
   ) {
     this.alvara = new Alvara();
   }
@@ -63,14 +63,13 @@ export class AlvaraFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.alvara);
-
+    this.atualizar();
   }
 
   atualizar() {
     this.service
       .atualizarArquivoPorId(this.alvara)
       .subscribe(resposta => {
-        console.log(resposta);
         this.snackBar.open("SUCESSO Ao Atualizar Informações!", "SUCESSO!", {
           duration: 2000
         });

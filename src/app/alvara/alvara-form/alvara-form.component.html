@@ -23,8 +23,6 @@
                     <input type="text" class="form-control" disabled="true" [ngModel]="alvara.id" name="id" />
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -38,8 +36,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Nome Arquivo: </label>
@@ -67,24 +63,12 @@
                     <input type="text" class="form-control" [(ngModel)]="alvara.cnpj_empresa" name="cnpj_empresa" />
                 </div>
             </div>
-
-
-            <br />
             <div id="col-md-6">
                 <div id="form-group">
-                    <label>Data de Emissão</label>
-                    <input matInput [matDatepicker]="dataInicio" disabled name="dataInicio"
-                        [(ngModel)]="alvara.data_emissao" placeholder="Data emissão">
-                    <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
-                    <mat-datepicker #dataInicio disabled="false"></mat-datepicker>
+                    <label>Emissão: </label>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.data_emissao" name="dataEmissao" />
                 </div>
             </div>
-            <br />
-
-
-
-
-
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Vencimento: </label>
@@ -92,16 +76,12 @@
                         name="dataVencimento" />
                 </div>
             </div>
-
-
-
             <div id="col-md-6">
                 <div id="form-group">
                     <label>Expira:</label>
                     <input type="text" class="form-control" [ngModel]="alvara.expira" name="expira" disabled="true" />
                 </div>
             </div>
-
 
         </div>
 
@@ -114,6 +94,12 @@
                 </button>
             </div>
         </div>
+
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
 
     </form>
 </div>

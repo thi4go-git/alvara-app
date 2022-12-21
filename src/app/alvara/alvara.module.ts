@@ -17,10 +17,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NgModule } from '@angular/core';
 import { AlvaraFormComponent } from './alvara-form/alvara-form.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({

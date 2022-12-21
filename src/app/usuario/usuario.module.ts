@@ -9,9 +9,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [UsuarioListComponent],
+  declarations: [UsuarioListComponent, UsuarioFormComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
@@ -19,10 +24,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     MatTabsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatInputModule,
+    MatToolbarModule
   ],
   exports: [
-    UsuarioListComponent
+    UsuarioListComponent,
+    UsuarioFormComponent
   ]
 
 })

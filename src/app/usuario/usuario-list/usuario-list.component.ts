@@ -40,10 +40,8 @@ export class UsuarioListComponent implements OnInit {
     this.listarUsuarios();
   }
 
-  teste() {
-    this.snackBar.open("btn", "btn!", {
-      duration: 2000
-    });
+  novoUsuario() {
+    this.router.navigate(['/usuario/form'])
   }
 
 
@@ -93,7 +91,6 @@ export class UsuarioListComponent implements OnInit {
     this.service.ativarUsuarioAdm(usuario.id)
       .subscribe(resposta => {
         console.log(resposta);
-
         this.snackBar.open("SUCESSO!", "SUCESSO!", {
           duration: 2000
         });
