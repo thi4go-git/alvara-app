@@ -18,6 +18,7 @@ export class AlvaraService {
 
 
   uploadPdf(formData: FormData): Observable<any> {
+    // responseType: 'blob'
     return this.http.post(this.apiURL + '/pdf', formData, { responseType: 'blob' });
   }
 

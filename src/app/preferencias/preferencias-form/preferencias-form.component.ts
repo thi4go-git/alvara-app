@@ -19,7 +19,7 @@ export class PreferenciasFormComponent implements OnInit {
   contSucessUp: number = 0;
   mostraProgresso: boolean = false;
   listaArquivos: File[];
-  percentProgress: number = 50;
+  percentProgress: number = 0;
   descProgresso: string = "";
 
   selecionarArquivosPDF(event) {
@@ -28,7 +28,7 @@ export class PreferenciasFormComponent implements OnInit {
     for (let cont = 0; cont < this.listaArquivos.length; cont++) {
       listaNomes.push(this.listaArquivos[cont].name);
     }
-    document.getElementById('arquivosPdfLabel').innerHTML = listaNomes.join();
+    document.getElementById('select').innerHTML = listaNomes.length + " Arquivos Selecionados...";
   }
 
   onUpload() {
@@ -50,20 +50,25 @@ export class PreferenciasFormComponent implements OnInit {
   upload(formData: FormData) {
     this.service.uploadPdf(formData)
       .subscribe(response => {
+        //
         this.contSucessUp = this.contSucessUp + 1;
         this.percentProgress = (this.contSucessUp / this.listaArquivos.length) * 100;
         this.descProgresso = "Aguarde, processando ( " + this.contSucessUp + " de " + this.listaArquivos.length + " ) " +
           " - " + (this.percentProgress).toFixed(2) + "%";
         if (this.contSucessUp == this.listaArquivos.length) {
           this.mostraProgresso = false;
-          this.snackBar.open("Processo Concluído! (" + this.contSucessUp + ") Arquivos processados!", "Sucesso!", {
+          document.getElementById('select').innerHTML = "Concluído!";
+          this.listaArquivos = [];
+          this.snackBar.open("Processo Concluído! (" + this.contSucessUp + ") Arquivos processados com Sucesso!", "Sucesso!", {
             duration: 4000
           });
-          this.router.navigate(['/preferencias/form']);
           this.contSucessUp = 0;
           this.percentProgress = 0;
         }
+        //
       }, responseError => {
+        console.log("ERRO");
+        console.log(responseError);
         this.snackBar.open("Erro ao Fazer upload!", "ERRO!", {
           duration: 3000
         });
