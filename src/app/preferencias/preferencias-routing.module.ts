@@ -7,7 +7,7 @@ import { PreferenciasFormComponent } from './preferencias-form/preferencias-form
 
 const routes: Routes = [
   {
-    path: 'preferencias', component: LayoutComponent, canActivate: [AuthGuard], children: [
+    path: 'preferencias', component: LayoutComponent, canActivate: [AuthGuard], canLoad: [AuthGuard], children: [
       { path: 'form', component: PreferenciasFormComponent },
       { path: '', redirectTo: '/preferencias/form', pathMatch: 'full' }
     ]

@@ -8,7 +8,7 @@ import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 
 const routes: Routes = [
   {
-    path: 'usuario', component: LayoutComponent, canActivate: [AuthGuard], children: [
+    path: 'usuario', component: LayoutComponent, canActivate: [AuthGuard],canLoad: [AuthGuard]  ,children: [
       { path: 'lista', component: UsuarioListComponent },
       { path: 'form', component: UsuarioFormComponent },
       { path: '', redirectTo: '/usuario/lista', pathMatch: 'full' }
