@@ -80,11 +80,13 @@ export class UsuarioListComponent implements OnInit {
         this.snackBar.open("SUCESSO!", "SUCESSO!", {
           duration: 2000
         });
-        this.router.navigate(['/preferencias/form'])
+        location.reload()
       }, erro => {
-        console.log('erro ativarDesativar');
         console.log(erro);
-      });   
+        this.snackBar.open("erro ativarDesativar!", "Erro!", {
+          duration: 2000
+        });
+      });
   }
 
   ativarDesativarAdm(usuario: Usuario) {
@@ -95,10 +97,13 @@ export class UsuarioListComponent implements OnInit {
           duration: 2000
         });
       }, erro => {
-        console.log('erro ativarDesativarAdm');
         console.log(erro);
+        this.snackBar.open("erro ativarDesativarAdm!", "Erro!", {
+          duration: 2000
+        });
       });
-    this.router.navigate(['/preferencias/form'])
+    location.reload();
+
   }
 
 

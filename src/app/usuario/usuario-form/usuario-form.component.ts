@@ -12,8 +12,6 @@ export class UsuarioFormComponent implements OnInit {
     this.permissoes = ['USER', 'ADMIN'];
   }
 
-
-
   ngOnInit(): void {
   }
 
