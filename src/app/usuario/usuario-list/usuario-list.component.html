@@ -51,7 +51,8 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.celular }}</td>
                         <td>
-                            <a href="/preferencias/form" (click)="ativarDesativar(usuario)">
+                            <a href="/preferencias/form" (click)="ativarDesativar(usuario)" data-toggle="modal"
+                                data-target="#modalAtivacao">
                                 <mat-icon>
                                     {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
                                 </mat-icon>

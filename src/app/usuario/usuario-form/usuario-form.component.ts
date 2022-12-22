@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usuario-form.component.css']
 })
 export class UsuarioFormComponent implements OnInit {
+  permissoes: string[];
+  nova : string[];
+  constructor() {
+    this.permissoes = ['USER', 'ADMIN'];
+  }
 
-  constructor() { }
+
 
   ngOnInit(): void {
   }
+
+
 
 }

@@ -14,10 +14,11 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log("canActivate");
     return this.verificarAutenticacaoUser();
   }
 
-  verificarAutenticacaoUser() {
+  private verificarAutenticacaoUser() {
     const autenticado = this.authService.isAuthenticated();
     if (autenticado) {
       return true;
@@ -28,6 +29,9 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> | Promise<boolean> {
+    console.log("canLoad");
+    console.log(segments);
+    console.log(route);
     return this.verificarAutenticacaoUser();
   }
 

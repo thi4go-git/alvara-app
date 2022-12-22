@@ -22,16 +22,28 @@ export class PreferenciasFormComponent implements OnInit {
   percentProgress: number = 50;
   descProgresso: string = "";
 
-  uploadPdf(event) {
-    this.mostraProgresso = true;
+  selecionarArquivosPDF(event) {
     this.listaArquivos = event.target.files;
+    const listaNomes = [];
+    for (let cont = 0; cont < this.listaArquivos.length; cont++) {
+      listaNomes.push(this.listaArquivos[cont].name);
+    }
+    document.getElementById('arquivosPdfLabel').innerHTML = listaNomes.join();
+  }
+
+  onUpload() {
     if (this.listaArquivos) {
+      this.mostraProgresso = true;
       for (let index = 0; index < this.listaArquivos.length; index++) {
         const pdf = this.listaArquivos[index];
         const formData: FormData = new FormData();
         formData.append("pdf", pdf);
         this.upload(formData);
       }
+    } else {
+      this.snackBar.open("Selecione os Arquivos para UPLOAD!", "INFO!", {
+        duration: 3000
+      });
     }
   }
 
@@ -44,8 +56,8 @@ export class PreferenciasFormComponent implements OnInit {
           " - " + (this.percentProgress).toFixed(2) + "%";
         if (this.contSucessUp == this.listaArquivos.length) {
           this.mostraProgresso = false;
-          this.snackBar.open("Processo Concluído!", "Sucesso!", {
-            duration: 3000
+          this.snackBar.open("Processo Concluído! (" + this.contSucessUp + ") Arquivos processados!", "Sucesso!", {
+            duration: 4000
           });
           this.router.navigate(['/preferencias/form']);
           this.contSucessUp = 0;

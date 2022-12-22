@@ -18,6 +18,7 @@ import { PreferenciasModule } from './preferencias/preferencias.module';
 import { HomeModule } from './home/home.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { UsuarioService } from './usuario.service';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 
@@ -26,7 +27,8 @@ import { UsuarioService } from './usuario.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,6 @@
     </mat-tab>
 
     <mat-tab>
-
         <ng-template mat-tab-label>
             <mat-icon>settings</mat-icon>
             Preferências PDF
@@ -30,9 +29,16 @@
                 </mat-toolbar>
             </p>
             <form>
-                <input type="file" name="pdf" multiple (change)="uploadPdf($event)"
-                    data-allowed-file-extensions='["pdf"]' />
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="pdf" multiple id="arquivosPdf"
+                        (change)="selecionarArquivosPDF($event)" data-allowed-file-extensions='["pdf"]' />
+                    <label class="custom-file-label" for="custoFile" id="arquivosPdfLabel">Clique para
+                        Selecionar...</label>
+                </div>
+                <br />
+                <button type="button" class="btn btn-primary" (click)="onUpload()">Upload</button>
             </form>
         </mat-card>
     </mat-tab>
+
 </mat-tab-group>

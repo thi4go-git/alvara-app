@@ -80,11 +80,11 @@ export class UsuarioListComponent implements OnInit {
         this.snackBar.open("SUCESSO!", "SUCESSO!", {
           duration: 2000
         });
+        this.router.navigate(['/preferencias/form'])
       }, erro => {
         console.log('erro ativarDesativar');
         console.log(erro);
-      });
-    this.router.navigate(['/preferencias/form'])
+      });   
   }
 
   ativarDesativarAdm(usuario: Usuario) {

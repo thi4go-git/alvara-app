@@ -41,10 +41,8 @@ export class AlvaraListaComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(parametro => {
       if (parametro && parametro.tipoConsulta) {
-        console.log("Consulta Personalizada");
         this.listarPersonalizado();
       } else {
-        console.log("Consulta Geral");
         this.listarArquivos();
       }
     });
@@ -101,7 +99,6 @@ export class AlvaraListaComponent implements OnInit {
 
 
   listarVencidos(pagina = 0, tamanho = 10) {
-    console.log("totalVencidos");
     this.mostraProgresso = true;
     this.service.listarVencidos(pagina, tamanho)
       .subscribe(resposta => {
@@ -127,7 +124,6 @@ export class AlvaraListaComponent implements OnInit {
 
   listarVencerEmAte60Dias(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
-    console.log("listarVencerEmAte60Dias");
     this.service.listarVencerEmAte60Dias(pagina, tamanho)
       .subscribe(resposta => {
         this.listaAlvaras = resposta.content;
@@ -151,7 +147,6 @@ export class AlvaraListaComponent implements OnInit {
 
   listarDocumentosSemInfo(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
-    console.log("listarDocumentosSemInfo");
     this.service.listarDocumentosSemInfo(pagina, tamanho)
       .subscribe(resposta => {
         this.listaAlvaras = resposta.content;
@@ -174,7 +169,6 @@ export class AlvaraListaComponent implements OnInit {
   }
 
   listarVencerApos60Dias(pagina = 0, tamanho = 10) {
-    console.log("listarVencerApos60Dias");
     this.mostraProgresso = true;
     this.service.listarVencerApos60Dias(pagina, tamanho)
       .subscribe(resposta => {
@@ -255,7 +249,6 @@ export class AlvaraListaComponent implements OnInit {
         this.pagina = resposta.number;
         this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
         this.qtdeRegistros = this.listaAlvaras.length;
-        console.log(this.listaAlvaras);
         if (this.listaAlvaras.length == 0) {
           this.snackBar.open("Lista Vazia!", "Info!", {
             duration: 2000
