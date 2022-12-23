@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { UsuarioService } from 'src/app/usuario.service';
 import { Usuario } from '../Usuario';
+import { UsuarioInfoComponent } from '../usuario-info/usuario-info.component';
 
 
 @Component({
@@ -13,10 +15,12 @@ import { Usuario } from '../Usuario';
   styleUrls: ['./usuario-list.component.css']
 })
 export class UsuarioListComponent implements OnInit {
-  constructor(private service: UsuarioService,
+  constructor(
+    private service: UsuarioService,
     private snackBar: MatSnackBar,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
 
   }
@@ -133,6 +137,12 @@ export class UsuarioListComponent implements OnInit {
     this.usuarioUpdate = usuario;
   }
 
+  infoUsuario(usuario: Usuario) {
+    this.dialog.open(UsuarioInfoComponent, {
+      width: '400px', height: '450px',
+      data: usuario
+    });
+  }
 
 
 }

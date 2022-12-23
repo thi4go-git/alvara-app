@@ -89,19 +89,11 @@
 
         <br />
 
-        <div id="row">
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary" *ngIf="alvara.id">
-                    <i class="fa fa-sync-alt"></i>Atualizar
-                </button>
-            </div>
-        </div>
-
-        <input matInput [matDatepicker]="picker">
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-
-
+        <button type="submit" class="btn btn-primary" *ngIf="alvara.id">
+            <i class="fa fa-sync-alt"></i>Atualizar
+        </button>
+        <button type="button" class="btn btn-danger ml-2" (click)="voltarLista()">
+            <i class="fa fa-solid fa-arrow-alt-circle-left"></i>Voltar
+        </button>
     </form>
 </div>

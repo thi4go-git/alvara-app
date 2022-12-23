@@ -82,4 +82,8 @@ export class AlvaraFormComponent implements OnInit {
       })
   }
 
+  voltarLista() {
+    this.router.navigate(['/alvara/lista'])
+  }
+
 }

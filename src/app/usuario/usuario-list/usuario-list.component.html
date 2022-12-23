@@ -34,9 +34,7 @@
                     <tr *ngFor="let usuario of listaUsuarios">
                         <td>
                             <div *ngIf="usuario.foto">
-                                <a href="/preferencias/form" (click)="prepararUsuarioUpdate(usuario)">
-                                    <img width="50" height="50" src="data:image/jpeg;base64,{{ usuario.foto }}" />
-                                </a>
+                                <img width="50" height="50" src="data:image/jpeg;base64,{{ usuario.foto }}" />
                             </div>
                             <div *ngIf=" !usuario.foto">
                                 <input type="file" name="foto" (change)="uploadFoto($event,usuario)" />
@@ -73,6 +71,9 @@
                             <a href="/preferencias/form">
                                 <mat-icon>delete</mat-icon>
                             </a>
+                        </td>
+                        <td>
+                            <mat-icon (click)="infoUsuario(usuario)">visibility</mat-icon>
                         </td>
                     </tr>
                 </tbody>

@@ -15,8 +15,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatInputModule } from '@angular/material/input';
 
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UsuarioInfoComponent } from './usuario-info/usuario-info.component'
+
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
-  declarations: [UsuarioListComponent, UsuarioFormComponent],
+  declarations: [UsuarioListComponent, UsuarioFormComponent, UsuarioInfoComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
@@ -26,7 +32,10 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
     UsuarioListComponent,

@@ -5,12 +5,44 @@
         </span>
     </mat-toolbar>
 </p>
-<form>
+
+<div id="row">
+    <div id="col-md-12">
+        <div class="alert alert-danger" role="alert" *ngFor="let erro of listaErros">
+            {{ erro }}
+        </div>
+    </div>
+</div>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
     <mat-form-field class="full-width">
-        <mat-label>Nome:</mat-label>
-        <input matInput placeholder="Digite o Nome:" />
+        <mat-label>Username:</mat-label>
+        <input formControlName="username" matInput placeholder="Digite o Username:" />
     </mat-form-field>
 
+    <mat-form-field class="full-width">
+        <mat-label>Password:</mat-label>
+        <input formControlName="password" matInput placeholder="Digite o Password:" />
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+        <mat-label>nome:</mat-label>
+        <input formControlName="nome" matInput placeholder="Digite o nome:" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>cpf:</mat-label>
+        <input formControlName="cpf" matInput placeholder="Digite o cpf:" />
+    </mat-form-field>
+
+    <button type="submit" class="btn btn-success" [disabled]="!formulario.valid">
+        <i class="fa fa-save"></i>Salvar
+    </button>
+
+    <button type="button" class="btn btn-danger ml-2" (click)="voltarPreferencias()">
+        <i class="fa fa-solid fa-arrow-alt-circle-left"></i>Voltar
+    </button>
 
 </form>
