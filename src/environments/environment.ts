@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
+  //apiUrl: 'http://cloudtecnologia.ddns.net:8085',
   CLI_ID: 'my-angular-app',
   CLI_SECRET: '@321'
 };

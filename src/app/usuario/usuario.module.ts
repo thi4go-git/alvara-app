@@ -21,6 +21,7 @@ import { UsuarioInfoComponent } from './usuario-info/usuario-info.component'
 
 import { MatDialogModule } from '@angular/material/dialog';
 
+
 @NgModule({
   declarations: [UsuarioListComponent, UsuarioFormComponent, UsuarioInfoComponent],
   imports: [

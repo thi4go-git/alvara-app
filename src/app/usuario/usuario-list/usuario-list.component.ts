@@ -9,6 +9,7 @@ import { Usuario } from '../Usuario';
 import { UsuarioInfoComponent } from '../usuario-info/usuario-info.component';
 
 
+
 @Component({
   selector: 'app-usuario-list',
   templateUrl: './usuario-list.component.html',
@@ -21,9 +22,8 @@ export class UsuarioListComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private dialog: MatDialog
-  ) {
+  ) { }
 
-  }
 
   usuarioUpdate: Usuario;
   //
@@ -144,5 +144,6 @@ export class UsuarioListComponent implements OnInit {
     });
   }
 
-
 }
+
+

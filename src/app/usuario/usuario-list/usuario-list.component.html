@@ -49,18 +49,14 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.celular }}</td>
                         <td>
-                            <a href="/preferencias/form" (click)="ativarDesativar(usuario)">
-                                <mat-icon>
-                                    {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
-                                </mat-icon>
-                            </a>
+                            <mat-icon (click)="ativarDesativar(usuario)">
+                                {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
+                            </mat-icon>
                         </td>
                         <td>
-                            <a href="/preferencias/form" (click)="ativarDesativarAdm(usuario)">
-                                <mat-icon>
-                                    {{ usuario.admin ? 'thumb_up' : 'thumb_down' }}
-                                </mat-icon>
-                            </a>
+                            <mat-icon (click)="ativarDesativarAdm(usuario)">
+                                {{ usuario.admin ? 'thumb_up' : 'thumb_down' }}
+                            </mat-icon>
                         </td>
                         <td>
                             <a href="/preferencias/form">

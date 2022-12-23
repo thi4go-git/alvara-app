@@ -19,7 +19,7 @@ import { HomeModule } from './home/home.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { UsuarioService } from './usuario.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
-import { DialogModule } from './dialog/dialog.module';
+
 
 
 
@@ -40,8 +40,7 @@ import { DialogModule } from './dialog/dialog.module';
     AlvaraModule,
     PreferenciasModule,
     HomeModule,
-    UsuarioModule,
-    DialogModule
+    UsuarioModule
   ],
   providers: [
     AlvaraService,
