@@ -49,27 +49,23 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.celular }}</td>
                         <td>
-                            <mat-icon (click)="ativarDesativar(usuario)">
+                            <mat-icon (click)="ativarDesativar(usuario)" class="cursorMao">
                                 {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
                             </mat-icon>
                         </td>
                         <td>
-                            <mat-icon (click)="ativarDesativarAdm(usuario)">
+                            <mat-icon (click)="ativarDesativarAdm(usuario)" class="cursorMao">
                                 {{ usuario.admin ? 'thumb_up' : 'thumb_down' }}
                             </mat-icon>
                         </td>
                         <td>
-                            <a href="/preferencias/form">
-                                <mat-icon>edit</mat-icon>
-                            </a>
+                            <mat-icon class="cursorMao">edit</mat-icon>
                         </td>
                         <td>
-                            <a href="/preferencias/form">
-                                <mat-icon>delete</mat-icon>
-                            </a>
+                            <mat-icon (click)="deletarUsuario(usuario)" class="cursorMao">delete</mat-icon>
                         </td>
                         <td>
-                            <mat-icon (click)="infoUsuario(usuario)">visibility</mat-icon>
+                            <mat-icon (click)="infoUsuario(usuario)" class="cursorMao">visibility</mat-icon>
                         </td>
                     </tr>
                 </tbody>

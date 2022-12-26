@@ -4,18 +4,18 @@
 
             <div class="nav">
 
-                <a class="nav-link active" routerLink="/home/inicio">
+                <a class="nav-link active" href="/home/inicio" (click)="navegarInicio()">
                     <mat-icon>home</mat-icon>
                     Início
                 </a>
 
                 <div class="sb-sidenav-menu-heading">Version 1.0.0</div>
-                <a class="nav-link active" routerLink="/alvara/lista">
+                <a class="nav-link active" href="/alvara/lista">
                     <mat-icon>description</mat-icon>
                     Alvarás
                 </a>
 
-                <a class="nav-link active" routerLink="/preferencias/form" *ngIf="administrador">
+                <a class="nav-link active" href="/preferencias/form" *ngIf="administrador">
                     <mat-icon>lock</mat-icon>
                     Administrador
                 </a>

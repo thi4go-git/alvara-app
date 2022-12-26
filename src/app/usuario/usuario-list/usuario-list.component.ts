@@ -100,6 +100,7 @@ export class UsuarioListComponent implements OnInit {
         this.snackBar.open("SUCESSO!", "SUCESSO!", {
           duration: 2000
         });
+        location.reload()
       }, erro => {
         console.log(erro);
         this.snackBar.open("erro ativarDesativarAdm!", "Erro!", {
@@ -142,6 +143,21 @@ export class UsuarioListComponent implements OnInit {
       width: '400px', height: '450px',
       data: usuario
     });
+  }
+
+  deletarUsuario(usuarioDelete: Usuario) {
+    this.service.deletarporId(usuarioDelete.id)
+      .subscribe(response => {
+        this.snackBar.open("SUCESSO ao Deletar Usuário!", "SUCESSO!", {
+          duration: 3000
+        });
+        this.listarUsuarios();
+      }, responseError => {
+        console.log(responseError);
+        this.snackBar.open("ERRO ao Deletar Usuário!", "ERRO!", {
+          duration: 3000
+        });
+      });
   }
 
 }

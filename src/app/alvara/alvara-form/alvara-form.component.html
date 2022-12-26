@@ -23,12 +23,13 @@
                     <input type="text" class="form-control" disabled="true" [ngModel]="alvara.id" name="id" />
                 </div>
             </div>
+            <br />
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <b><label>Tipo Documento: </label></b>
-                        <select class="form-control" [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="alvara.tipo_doc">
+                        <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="alvara.tipo_doc"
+                            class="cursorMao">
                             <option *ngFor="let tipo of tipo_doc" [ngValue]="tipo">
                                 {{ tipo}}
                             </option>

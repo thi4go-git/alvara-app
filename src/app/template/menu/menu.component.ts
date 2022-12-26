@@ -31,5 +31,13 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  navegarInicio() {
+    this.router.navigate(['/home/inicio']);
+  }
+
+  navegarAlvaras() {
+    this.router.navigate(['/alvara/lista']);
+  }
+
 
 }

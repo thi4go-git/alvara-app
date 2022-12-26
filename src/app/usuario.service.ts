@@ -35,4 +35,9 @@ export class UsuarioService {
   ativarUsuarioAdm(id: number): Observable<any> {
     return this.http.patch(this.apiURL + "/ativardesativaradm/" + id, null);
   }
+
+  deletarporId(id: number): Observable<any> {
+    return this.http.delete<any>(this.apiURL + "/delete/" + id);
+  }
+
 }
