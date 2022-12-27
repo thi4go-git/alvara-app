@@ -12,6 +12,10 @@ export class AuthGuard implements CanActivate, CanLoad {
   ) {
 
   }
+  canLoad(route: Route, segments: UrlSegment[]): boolean | Promise<boolean> | Observable<boolean> {
+    console.log("canLoad");
+    return false;
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log("canActivate");
@@ -28,9 +32,6 @@ export class AuthGuard implements CanActivate, CanLoad {
     }
   }
 
-  canLoad(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> | Promise<boolean> {
-    console.log("canLoad");
-    return false;
-  }
+
 
 }

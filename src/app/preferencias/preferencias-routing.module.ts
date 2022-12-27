@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'preferencias', component: LayoutComponent,
     canActivate: [AuthGuard], canLoad: [AuthGuard], children: [
-      { path: 'form', component: PreferenciasFormComponent, canLoad: [AuthGuard] },
+      { path: 'form', component: PreferenciasFormComponent },
       { path: '', redirectTo: '/preferencias/form', pathMatch: 'full' },
       { path: '**', component: PaginaNaoEncontradaComponent }
     ]
